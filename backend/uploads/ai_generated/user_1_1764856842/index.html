@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lumoria Nexus Studios</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+        integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Orbitron:wght@400;700&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0ea5e9;
+            --secondary: #0284c7;
+            --accent: #06b6d4;
+            --bg: #000;
+            --text: #f0f9ff;
+            --font-family: 'Inter', sans-serif;
+            --font-family-header: 'Orbitron', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-family);
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            padding: 1rem 0;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-family: var(--font-family-header);
+            font-size: 1.5rem;
+            color: var(--accent);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://picsum.photos/1920/800?random=1') no-repeat center center/cover;
+            opacity: 0.3;
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 800px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-family-header);
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--accent);
+            color: var(--bg);
+            padding: 1rem 2rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: var(--primary);
+        }
+
+        /* Particles Animation */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -2;
+        }
+
+        /* Sections */
+        section {
+            padding: 4rem 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h2 {
+            font-family: var(--font-family-header);
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-align: center;
+        }
+
+        /* About Section */
+        .about-content {
+            text-align: center;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .team-member {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .team-member h3 {
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .team-member p {
+            color: #ccc;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-card h3 {
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .service-card p {
+            color: #ccc;
+        }
+
+        .pricing-tiers {
+            margin-top: 1rem;
+        }
+
+        .pricing-tiers p {
+            margin: 0.5rem 0;
+        }
+
+        /* Portfolio Section */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .portfolio-item {
+            background-color: rgba(255, 255, 255, 0.05);
+            border-radius: 5px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .portfolio-item-content {
+            padding: 1.5rem;
+        }
+
+        .portfolio-item-content h3 {
+            margin-bottom: 0.5rem;
+            color: var(--accent);
+        }
+
+        .portfolio-item-content p {
+            color: #ccc;
+        }
+
+        /* Contact Section */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .contact-form label {
+            margin-top: 1rem;
+            color: var(--text);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            padding: 0.8rem;
+            margin-top: 0.3rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 5px;
+            color: var(--text);
+            font-family: var(--font-family);
+        }
+
+        .contact-form button {
+            margin-top: 2rem;
+            padding: 1rem 2rem;
+            background-color: var(--accent);
+            color: var(--bg);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-form button:hover {
+            background-color: var(--primary);
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .contact-info p {
+            margin: 0.5rem 0;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #111;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        footer p {
+            color: #888;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links {
+                margin-top: 1rem;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .nav-links li {
+                margin-left: 0;
+                margin-bottom: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .services-grid,
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo">Lumoria Nexus Studios</a>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div id="particles-js"></div>
+        <div class="hero-content">
+            <h1>Designing the Future, One Pixel at a Time</h1>
+            <p>Immersive digital experiences crafted with precision and imagination.</p>
+            <a href="#contact" class="btn">Start Your Project</a>
+        </div>
+    </section>
+
+    <section id="about">
+        <h2>About Us</h2>
+        <div class="about-content">
+            <p>Lumoria Nexus Studios is an independent digital innovation hub founded by visionary designers and
+                engineers who blend art and technology into seamless experiences. Our mission is to push the boundaries
+                of digital storytelling and redefine what’s possible online.</p>
+
+            <h3>Our Team</h3>
+            <div class="team-grid">
+                <div class="team-member">
+                    <h3>Aris Venn</h3>
+                    <p>Creative Director</p>
+                </div>
+                <div class="team-member">
+                    <h3>Kaela Rowen</h3>
+                    <p>Lead Experience Architect</p>
+                </div>
+                <div class="team-member">
+                    <h3>Dray Solen</h3>
+                    <p>Chief Systems Engineer</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services">
+        <h2>Our Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>Immersive 3D Brand Environments</h3>
+                <p>Interactive brand worlds built with WebGL, creating captivating experiences for your audience.</p>
+                <div class="pricing-tiers">
+                    <p><b>Starter:</b> $1,200</p>
+                    <p><b>Pro:</b> $3,500</p>
+                    <p><b>Elite:</b> Custom quote</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <h3>Hyper-Responsive Website Design</h3>
+                <p>Ultra-fast, intuitive interfaces for modern audiences, optimized for any device.</p>
+                <div class="pricing-tiers">
+                    <p><b>Starter:</b> $1,200</p>
+                    <p><b>Pro:</b> $3,500</p>
+                    <p><b>Elite:</b> Custom quote</p>
+                </div>
+            </div>
+            <div class="service-card">
+                <h3>Digital Storytelling Campaigns</h3>
+                <p>Cinematic marketing content and narrative-driven design that connects with your audience on a deeper
+                    level.</p>
+                <div class="pricing-tiers">
+                    <p><b>Starter:</b> $1,200</p>
+                    <p><b>Pro:</b> $3,500</p>
+                    <p><b>Elite:</b> Custom quote</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio">
+        <h2>Our Portfolio</h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <img src="https://picsum.photos/600/400?random=2" alt="AetherWave Launch Universe">
+                <div class="portfolio-item-content">
+                    <h3>AetherWave Launch Universe</h3>
+                    <p>A 3D product unveiling environment that creates a memorable launch experience.</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://picsum.photos/600/400?random=3" alt="NebulaFlow UI Suite">
+                <div class="portfolio-item-content">
+                    <h3>NebulaFlow UI Suite</h3>
+                    <p>A futuristic UI/UX kit designed for next-generation web applications.</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <img src="https://picsum.photos/600/400?random=4" alt="Solis VR Brand Tour">
+                <div class="portfolio-item-content">
+                    <h3>Solis VR Brand Tour</h3>
+                    <p>Immersive VR walkthrough for a renewable energy client, showcasing their commitment to
+                        sustainability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <h2>Contact Us</h2>
+        <form class="contact-form">
+            <label for="name">Name</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="project-type">Project Type</label>
+            <input type="text" id="project-type" name="project-type">
+
+            <label for="budget">Budget</label>
+            <input type="text" id="budget" name="budget">
+
+            <label for="message">Message</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Send Message</button>
+        </form>
+
+        <div class="contact-info">
+            <p>Email: <a href="mailto:contact@lumorianexus.com">contact@lumorianexus.com</a></p>
+            <p>HQ: The Lumoria District, NeoVale City</p>
+            <!-- Optional Map Marker -->
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 Lumoria Nexus Studios. All rights reserved.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            "particles": {
+                "number": {
+                    "value": 80,
+                    "density": {
+                        "enable": true,
+                        "value_area": 800
+                    }
+                },
+                "color": {

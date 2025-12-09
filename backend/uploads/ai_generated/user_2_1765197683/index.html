@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixelHaven - Digital Art Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Additional styles for hero section image overlay */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            height: 100vh; /* Ensures full viewport height */
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Correctly covers the entire area */
+            z-index: -1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4); /* Semi-transparent black overlay */
+            z-index: -1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">PixelHaven</div>
+        <div class="menu-toggle">
+            ☰
+        </div>
+        <ul class="nav-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <img src="https://source.unsplash.com/1920x1080/?digital-art,creative,abstract" alt="Hero Image" class="hero-image">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Unleash Your Creative Vision</h1>
+            <p>Discover premium digital art solutions to elevate your brand and captivate your audience.</p>
+            <a href="#" class="btn btn-primary">Get Started Today</a>
+            <a href="#" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="container">
+            <h2>Our Expertise</h2>
+            <div class="grid grid-3">
+                <div class="card feature">
+                    <i class="fa-solid fa-palette fa-3x"></i>
+                    <h3>Creative Design</h3>
+                    <p>Transform your ideas into stunning visuals with our expert design services.</p>
+                </div>
+                <div class="card feature">
+                    <i class="fa-solid fa-code fa-3x"></i>
+                    <h3>Digital Innovation</h3>
+                    <p>Leverage cutting-edge technology to create unique and engaging digital experiences.</p>
+                </div>
+                <div class="card feature">
+                    <i class="fa-solid fa-rocket fa-3x"></i>
+                    <h3>Strategic Branding</h3>
+                    <p>Elevate your brand identity with our comprehensive branding solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="gallery">
+        <div class="container">
+            <h2>Our Portfolio</h2>
+            <div class="grid grid-3">
+                <img src="https://source.unsplash.com/600x400/?digital-art,abstract" alt="Artwork 1">
+                <img src="https://source.unsplash.com/600x400/?creative,design" alt="Artwork 2">
+                <img src="https://source.unsplash.com/600x400/?illustration,art" alt="Artwork 3">
+                <img src="https://source.unsplash.com/600x400/?painting,digital" alt="Artwork 4">
+                <img src="https://source.unsplash.com/600x400/?graphic-design,art" alt="Artwork 5">
+                <img src="https://source.unsplash.com/600x400/?abstract-art,design" alt="Artwork 6">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2024 PixelHaven. All rights reserved.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - ProFence Solutions</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <div class="logo">
+        <a href="index.html"><i class="fa-solid fa-shield-halved"></i> ProFence Solutions</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+         <li><a href="index.html" class="nav-link">Home</a></li>
+         <li><a href="about.html" class="nav-link">About</a></li>
+         <li><a href="services.html" class="nav-link">Services</a></li>
+         <li><a href="portfolio.html" class="nav-link">Portfolio</a></li>
+         <li><a href="testimonials.html" class="nav-link">Testimonials</a></li>
+         <li><a href="faq.html" class="nav-link">FAQ</a></li>
+         <li><a href="contact.html" class="nav-link active">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <header class="page-header">
+        <div class="hero-bg-container">
+            <img src="https://picsum.photos/id/0/1920/1080" class="hero-bg" alt="A desk with a laptop and notebook">
+        </div>
+        <div class="hero-overlay"></div>
+        <div class="container">
+            <h1>Get in Touch</h1>
+            <p>We're here to answer your questions and provide a free estimate for your project.</p>
+        </div>
+    </header>
+
+    <section class="contact-section">
+      <div class="container">
+        <div class="contact-grid">
+          <div class="contact-form-container">
+            <h2>Request a Free Estimate</h2>
+            <form class="contact-form" id="contactForm">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone">
+              </div>
+              <div class="form-group">
+                <label for="service">Fence Type of Interest</label>
+                <select id="service" name="service">
+                  <option value="">--Please choose an option--</option>
+                  <option value="wood">Wood Fencing</option>
+                  <option value="vinyl">Vinyl Fencing</option>
+                  <option value="aluminum">Aluminum Fencing</option>
+                  <option value="chainlink">Chain Link Fencing</option>
+                  <option value="repair">Fence Repair</option>
+                  <option value="other">Other/Custom</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="message">Project Details</label>
+                <textarea id="message" name="message" rows="5" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Send Request</button>
+            </form>
+          </div>
+          <div class="contact-info-container">
+            <h2>Contact Information</h2>
+            <p>Reach out to us directly or stop by our office. We look forward to hearing from you!</p>
+            <ul class="contact-details">
+              <li>
+                <i class="fa-solid fa-location-dot"></i>
+                <div>
+                  <strong>Address</strong>
+                  <p>123 Fence Lane, Yourtown, ST 12345</p>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-phone"></i>
+                <div>
+                  <strong>Phone</strong>
+                  <p><a href="tel:123-456-7890">(123) 456-7890</a></p>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-envelope"></i>
+                <div>
+                  <strong>Email</strong>
+                  <p><a href="mailto:contact@profencesolutions.com">contact@profencesolutions.com</a></p>
+                </div>
+              </li>
+              <li>
+                <i class="fa-solid fa-clock"></i>
+                <div>
+                  <strong>Business Hours</strong>
+                  <p>Mon - Fri: 8:00 AM - 5:00 PM</p>
+                  <p>Sat: By Appointment</p>
+                </div>
+              </li>
+            </ul>
+            <div class="service-area-map">
+                <h3>Our Service Area</h3>
+                <img src="https://via.placeholder.com/600x400/eff6ff/1e3a8a?text=Service+Area+Map+Placeholder" alt="Service Area Map Placeholder">
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>ProFence Solutions</h3>
+          <p>Your local experts in professional fence installation and repair. Quality you can see, service you can trust.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="portfolio.html">Portfolio</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h3>Contact Us</h3>
+          <p><i class="fa-solid fa-location-dot"></i> 123 Fence Lane, Yourtown, ST 12345</p>
+          <p><i class="fa-solid fa-phone"></i> (123) 456-7890</p>
+          <p><i class="fa-solid fa-envelope"></i> contact@profencesolutions.com</p>
+        </div>
+        <div class="footer-col">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Houzz"><i class="fab fa-houzz"></i></a>
+            </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 ProFence Solutions. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

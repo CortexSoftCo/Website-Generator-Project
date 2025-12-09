@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HyperNova - The Future of Digital Experience</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo">HyperNova</a>
+            <nav class="nav-menu">
+                <div class="nav-indicator"></div>
+                <a href="index.html" class="nav-item active">Home</a>
+                <a href="#features" class="nav-item">Features</a>
+                <a href="#gallery" class="nav-item">Gallery</a>
+                <a href="#leaderboard" class="nav-item">Leaderboard</a>
+                <a href="#contact" class="nav-item">Contact</a>
+                <a href="about.html" class="nav-item">About</a>
+                <a href="services.html" class="nav-item">Services</a>
+            </nav>
+             <div class="menu-toggle">
+                <div class="hamburger"></div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div id="particles-js"></div>
+            <div class="hero-content">
+                <h1 class="glitch" data-text="Enter HyperNova">Enter HyperNova</h1>
+                <p class="subtitle animate-up">Discover a new dimension of interactive web experiences.</p>
+                <div class="cta-buttons animate-up">
+                    <a href="#features" class="btn btn-primary">Explore Now</a>
+                    <button class="btn btn-secondary" id="adventureBtn">Start Adventure</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section id="features" class="features-section">
+            <div class="container">
+                <h2 class="section-title animate-fade-in">Core Dynamics</h2>
+                <div class="features-grid">
+                    <div class="feature-card animate-scroll" data-tilt>
+                        <div class="feature-icon"><i class="fas fa-rocket"></i></div>
+                        <img src="https://picsum.photos/id/48/600/400" alt="Immersive Experiences">
+                        <h3>Immersive Experiences</h3>
+                        <p>Engage users with stunning 3D visuals and particle effects that bring your content to life.</p>
+                    </div>
+                    <div class="feature-card animate-scroll" data-tilt>
+                        <div class="feature-icon"><i class="fas fa-cogs"></i></div>
+                        <img src="https://picsum.photos/id/56/600/400" alt="Real-Time Interaction">
+                        <h3>Real-Time Interaction</h3>
+                        <p>Dynamic interfaces that respond instantly to user input, creating a seamless and fluid journey.</p>
+                    </div>
+                    <div class="feature-card animate-scroll" data-tilt>
+                        <div class="feature-icon"><i class="fas fa-chart-line"></i></div>
+                        <img src="https://picsum.photos/id/62/600/400" alt="Data-Driven Design">
+                        <h3>Data-Driven Design</h3>
+                        <p>Leverage live data visualizations and analytics to create smarter, more effective web applications.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dynamic Stats Section -->
+        <section class="stats-section">
+            <div class="container">
+                <div class="stat-item animate-scroll">
+                    <i class="fas fa-users"></i>
+                    <h3 class="counter" data-target="12500">0</h3>
+                    <p>Active Users</p>
+                </div>
+                <div class="stat-item animate-scroll">
+                    <i class="fas fa-project-diagram"></i>
+                    <h3 class="counter" data-target="750">0</h3>
+                    <p>Projects Launched</p>
+                </div>
+                <div class="stat-item animate-scroll">
+                    <i class="fas fa-code"></i>
+                    <h3 class="counter" data-target="1500000">0</h3>
+                    <p>Lines of Code</p>
+                </div>
+                <div class="stat-item animate-scroll">
+                    <i class="fas fa-star"></i>
+                    <h3 class="counter" data-target="99">0</h3>
+                    <p>Satisfaction %</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Live Gallery Section -->
+        <section id="gallery" class="gallery-section">
+            <div class="container">
+                <h2 class="section-title animate-fade-in">Visual Universe</h2>
+                <div class="gallery-grid">
+                    <div class="gallery-item animate-scroll"><img src="https://picsum.photos/id/10/800/600" alt="Gallery Image 1" data-src="https://picsum.photos/id/10/1200/800"></div>
+                    <div class="gallery-item animate-scroll"><img src="https://picsum.photos/id/20/600/800" alt="Gallery Image 2" data-src="https://picsum.photos/id/20/800/1200"></div>
+                    <div class="gallery-item animate-scroll"><img src="https://picsum.photos/id/42/800/600" alt="Gallery Image 3" data-src="https://picsum.photos/id/42/1200/800"></div>
+                    <div class="gallery-item animate-scroll"><img src="https://picsum.photos/id/169/600/800" alt="Gallery Image 4" data-src="https://picsum.photos/id/169/800/1200"></div>
+                    <div class="gallery-item animate-scroll"><img src="https://picsum.photos/id/175/800/600" alt="Gallery Image 5" data-src="https://picsum.photos/id/175/1200/800"></div>
+                    <div class="gallery-item animate-scroll"><img src="https://picsum.photos/id/214/800/600" alt="Gallery Image 6" data-src="https://picsum.photos/id/214/1200/800"></div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Interactive Chart Section -->
+        <section id="live-demo" class="chart-section">
+             <div class="container">
+                <h2 class="section-title animate-fade-in">Live Performance Metrics</h2>
+                <div class="chart-container animate-scroll">
+                    <canvas id="liveChart"></canvas>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gamified Leaderboard Section -->
+        <section id="leaderboard" class="gamified-section">
+            <div class="container">
+                <h2 class="section-title animate-fade-in">Interactive Leaderboard</h2>
+                <p class="section-subtitle animate-fade-in">Drag and drop to reorder the top innovators.</p>
+                <ul class="draggable-list" id="draggable-list">
+                    <!-- Items will be populated by JS -->
+                </ul>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section">
+            <div class="container">
+                <h2 class="section-title animate-fade-in">Join the HyperNova</h2>
+                <form class="contact-form animate-scroll" id="contactForm">
+                    <div class="form-group">
+                        <input type="text" id="name" name="name" required>
+                        <label for="name">Your Name</label>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" id="email" name="email" required>
+                        <label for="email">Your Email</label>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                        <label for="message">Your Message</label>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p>&copy; 2024 HyperNova. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for 'Start Adventure' -->
+    <div id="adventureModal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <div class="modal-animation">
+                <img src="https://picsum.photos/id/0/600/400" alt="Adventure awaits">
+                <h3>Welcome, Traveler!</h3>
+                <p>Your journey into the HyperNova is about to begin. Prepare for an unparalleled digital experience.</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Lightbox for Gallery -->
+    <div id="lightbox" class="lightbox">
+        <span class="lightbox-close">&times;</span>
+        <img class="lightbox-content" id="lightbox-img">
+        <div id="lightbox-caption"></div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vanilla-tilt@1.7.2/dist/vanilla-tilt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

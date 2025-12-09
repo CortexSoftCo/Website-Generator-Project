@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - TechSprout</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header scrolled">
+        <nav class="navbar">
+             <a href="index.html" class="nav-logo">TechSprout</a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html#home" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="index.html#features" class="nav-link">Features</a></li>
+                <li class="nav-item"><a href="index.html#pricing" class="nav-link">Pricing</a></li>
+                <li class="nav-item"><a href="index.html#blog" class="nav-link">Blog</a></li>
+                <li class="nav-item"><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </nav>
+    </header>
+
+    <main class="page-main">
+        <section class="contact-hero">
+            <div class="container">
+                <h1>Get In Touch</h1>
+                <p>We'd love to hear from you. Let's discuss how we can help your business grow.</p>
+            </div>
+        </section>
+
+        <section class="contact-section">
+             <div class="container contact-container">
+                 <div class="contact-form-wrapper">
+                     <h3>Send us a Message</h3>
+                     <form class="contact-form">
+                         <div class="form-group">
+                             <input type="text" id="name" name="name" required placeholder="Your Name">
+                         </div>
+                          <div class="form-group">
+                             <input type="email" id="email" name="email" required placeholder="Your Email">
+                         </div>
+                          <div class="form-group">
+                             <textarea id="message" name="message" rows="6" required placeholder="Your Message"></textarea>
+                         </div>
+                         <button type="submit" class="btn btn-primary">Submit Message</button>
+                     </form>
+                 </div>
+                 <div class="contact-info-wrapper">
+                     <img src="https://picsum.photos/id/431/1200/800" alt="Contact background image" class="contact-bg-image">
+                     <div class="contact-info-overlay"></div>
+                     <div class="contact-info-content">
+                         <h3>Contact Information</h3>
+                         <p><i class="fas fa-map-marker-alt"></i> 123 Tech Avenue, Silicon Valley, CA 94025</p>
+                         <p><i class="fas fa-phone"></i> (123) 456-7890</p>
+                         <p><i class="fas fa-envelope"></i> contact@techsprout.io</p>
+                         <div class="social-icons">
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                     </div>
+                 </div>
+             </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+       <!-- Footer content is the same as index.html -->
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rovira Property Management - Professional, Empathetic, Efficient</title>
+    <meta name="description" content="Rovira Property Management: Your trusted partner for rent collection, maintenance, and tenant communications. Experience efficient and empathetic property management solutions.">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        /* Reset and General Styles */
+        body, h1, h2, h3, p, ul, li { margin: 0; padding: 0; }
+        body { font-family: sans-serif; line-height: 1.6; color: #1e3a8a; background-color: #eff6ff; overflow-x: hidden; }
+        img { max-width: 100%; display: block; }
+        a { text-decoration: none; color: #3b82f6; }
+
+        /* Color Palette */
+        :root {
+            --primary: #3b82f6;
+            --secondary: #2563eb;
+            --accent: #60a5fa;
+            --background: #eff6ff;
+            --text: #1e3a8a;
+        }
+
+        /* Smooth Scrolling */
+        html { scroll-behavior: smooth; }
+
+        /* Basic Layout */
+        .container { width: 90%; max-width: 1200px; margin: 0 auto; padding: 20px; }
+        .grid { display: grid; gap: 20px; }
+
+        /* Navigation */
+        nav { background-color: #fff; padding: 15px 0; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); position: sticky; top: 0; z-index: 100; }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        nav ul { list-style: none; display: flex; }
+        nav ul li { margin-left: 20px; }
+        nav a { color: var(--text); transition: color 0.3s ease; }
+        nav a:hover { color: var(--primary); }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--secondary); }
+
+        /* Hero Section */
+        #hero { background: url('https://picsum.photos/id/100/1200/600') no-repeat center center/cover; color: white; text-align: center; padding: 100px 0; position: relative; overflow: hidden; }
+        #hero::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.4); z-index: 1; }
+        #hero .container { position: relative; z-index: 2; }
+        #hero h1 { font-size: 3rem; margin-bottom: 20px; }
+        #hero p { font-size: 1.2rem; margin-bottom: 30px; }
+        .btn { display: inline-block; background-color: var(--primary); color: white; padding: 15px 30px; border-radius: 5px; transition: background-color 0.3s ease; }
+        .btn:hover { background-color: var(--secondary); }
+        #hero .phone { font-size: 1.5rem; margin-top: 20px; }
+
+        /* Services Section */
+        #services { padding: 80px 0; text-align: center; }
+        #services h2 { font-size: 2.5rem; margin-bottom: 40px; }
+        .services-grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+        .service-card { background-color: #fff; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); transition: transform 0.3s ease, box-shadow 0.3s ease; }
+        .service-card:hover { transform: translateY(-5px); box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); }
+        .service-card i { font-size: 2rem; color: var(--primary); margin-bottom: 15px; }
+        .service-card h3 { font-size: 1.8rem; margin-bottom: 10px; }
+        .service-card p { font-size: 1rem; }
+
+        /* How It Works Section */
+        #how-it-works { padding: 80px 0; background: url('https://picsum.photos/id/101/800/400') no-repeat center center/cover; color: white; text-align: center; }
+        #how-it-works::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.6); z-index: 1; }
+        #how-it-works .container { position: relative; z-index: 2; }
+        #how-it-works h2 { font-size: 2.5rem; margin-bottom: 40px; }
+        .steps-grid { grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); }
+        .step { background-color: rgba(255, 255, 255, 0.1); padding: 20px; border-radius: 10px; backdrop-filter: blur(5px); transition: transform 0.3s ease; }
+        .step:hover { transform: translateY(-5px); }
+        .step i { font-size: 2rem; margin-bottom: 15px; }
+        .step h3 { font-size: 1.5rem; margin-bottom: 10px; }
+
+        /* Pricing/Contact CTA Section */
+        #pricing-cta { padding: 80px 0; text-align: center; background-color: #fff; box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.05); }
+        #pricing-cta h2 { font-size: 2.5rem; margin-bottom: 30px; }
+        #pricing-cta p { font-size: 1.2rem; margin-bottom: 40px; }
+
+        /* Tenant Portal Login */
+        #tenant-portal { padding: 50px 0; text-align: center; background-color: var(--background); }
+        #tenant-portal h2 { font-size: 2rem; margin-bottom: 20px; }
+        #tenant-portal a { font-size: 1.2rem; }
+
+        /* Footer */
+        footer { background-color: #1e3a8a; color: white; text-align: center; padding: 30px 0; }
+        footer p { margin-bottom: 10px; }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .container { width: 95%; padding: 15px; }
+            nav ul { display: none; }
+            #hero h1 { font-size: 2.5rem; }
+            #hero p { font-size: 1.1rem; }
+            .services-grid, .steps-grid { grid-template-columns: 1fr; }
+            #hero .phone { font-size: 1.2rem; }
+        }
+
+        /* Animations */
+        .fade-in { animation: fadeIn 1s ease-in-out forwards; opacity: 0; }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .slide-in-left { animation: slideInLeft 1s ease-in-out forwards; opacity: 0; }
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        /* SMS Opt-in */
+        .sms-opt-in { margin-top: 20px; font-size: 0.8rem; color: #777; }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+        }
+
+        .modal-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 600px;
+        }
+
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        /* Form Styles */
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            max-width: 400px;
+            margin: 20px auto;
+        }
+
+        label {
+            font-weight: bold;
+        }
+
+        input,
+        textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            background-color: var(--primary);
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button[type="submit"]:hover {
+            background-color: var(--secondary);
+        }
+
+        /* Mobile adjustments for the form */
+        @media (max-width: 600px) {
+            form {
+                width: 95%;
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container">
+            <a href="#" class="logo">Rovira Property Management</a>
+            <ul>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#how-it-works">How It Works</a></li>
+                <li><a href="#pricing-cta">Pricing</a></li>
+                <li><a href="#tenant-portal">Tenant Portal</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="hero">
+        <div class="container">
+            <h1 class="fade-in">Efficient and Empathetic Property Management</h1>
+            <p class="fade-in">Your trusted partner for maximizing property value and tenant satisfaction.</p>
+            <a href="#" class="btn fade-in">Pay Rent</a>
+            <p class="phone fade-in"><i class="fas fa-phone"></i> 786-758-3100</p>
+            <p class="sms-opt-in">Opt in for SMS notifications: reply START or enter your number — Msg & data rates may apply. Reply STOP to opt out, HELP for help.</p>
+        </div>
+    </header>
+
+    <section id="services">
+        <div class="container">
+            <h2 class="fade-in">Our Services</h2>
+            <div class="grid services-grid">
+                <div class="service-card fade-in">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Rent Collection</h3>
+                    <p>We streamline the rent collection process, ensuring timely payments and minimizing delinquencies. Our secure online portal makes it easy for tenants to pay, and we handle all follow-up and enforcement actions.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-wrench"></i>
+                    <h3>Maintenance</h3>
+                    <p>We provide comprehensive maintenance services, from routine repairs to emergency response. Our network of qualified contractors ensures that your property is well-maintained and tenant requests are addressed promptly.</p>
+                </div>
+                <div class="service-card fade-in">
+                    <i class="fas fa-comments"></i>
+                    <h3>Tenant Communications</h3>
+                    <p>We manage all tenant communications, including inquiries, complaints, and lease renewals. Our proactive approach ensures that tenants are satisfied and that your property is well-managed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="how-it-works">
+        <div class="container">
+            <h2 class="fade-in">How It Works</h2>
+            <div class="grid steps-grid">
+                <div class="step fade-in">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Consultation</h3>
+                    <p>We start with a free consultation to understand your property management needs and goals. We'll discuss your property, your tenants, and your expectations.</p>
+                </div>
+                <div class="step fade-in">
+                    <i class="fas fa-file-contract"></i>
+                    <h3>Agreement</h3>
+                    <p>We'll create a customized property management agreement that outlines our services, fees, and responsibilities. We'll work with you to ensure that the agreement meets your needs.</p>
+                </div>
+                <div class="step fade-in">
+                    <i class="fas fa-home"></i>
+                    <h3>Management</h3>
+                    <p>We'll take care of everything from rent collection to maintenance to tenant communications. You can relax knowing that your property is in good hands.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="pricing-cta">
+        <div class="container">
+            <h2 class="fade-in">Ready to Get Started?</h2>
+            <p class="fade-in">Contact us today for a free quote and to learn more about our property management services.</p>
+            <a href="#" class="btn fade-in" onclick="openModal()">Request a Quote</a>
+        </div>
+    </section>
+
+    <section id="tenant-portal">
+        <div class="container">
+            <h2>Tenant Portal Login</h2>
+            <a href="#">Access Your Account</a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Rovira Property Management</p>
+            <p>Phone: 786-758-3100</p>
+            <p>Email: info@rovirapropertymanagement.com</p>
+            <p>Address: 123 Main Street, Miami, FL 33101</p>
+        </div>
+    </footer>
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Request a Quote</h2>
+            <p>Please fill out the form below to request a quote for our property management services.</p>
+            <form id="quoteForm">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="phone">Phone:</label>
+                <input type="tel" id="phone" name="phone" required>
+
+                <label for="propertyAddress">Property Address:</label>
+                <input type="text" id="propertyAddress" name="propertyAddress" required>
+
+                <label for="message">Additional Information:</label>
+                <textarea id="message" name="message" rows="4"></textarea>
+
+                <button type="submit">Submit Request</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const elements = document.querySelectorAll('.fade-in, .slide-in-left');
+            elements.forEach(element => {
+                element.classList.add('animated');
+            });
+        });
+
+        function openModal() {
+            document.getElementById("myModal").style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById("myModal").style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            const modal = document.getElementById("myModal");
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,311 @@
+/* General Styles */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #000;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    scroll-behavior: smooth;
+}
+
+.container {
+    width: 80%;
+    margin: auto;
+    overflow: hidden;
+    padding: 20px 0;
+}
+
+a {
+    color: #a78bfa;
+    text-decoration: none;
+}
+
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #8b5cf6;
+    color: #fff;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.button:hover {
+    background-color: #7c3aed;
+}
+
+/* Header Styles */
+header {
+    background-color: #111;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    margin: 0;
+    font-family: 'Orbitron', sans-serif;
+    color: #8b5cf6;
+}
+
+header nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+}
+
+header nav ul li {
+    margin-left: 20px;
+}
+
+header nav ul li a {
+    color: #fff;
+    transition: color 0.3s ease;
+}
+
+header nav ul li a:hover {
+    color: #a78bfa;
+}
+
+/* Hero Section Styles */
+#hero {
+    background: url('https://picsum.photos/1920/1080?blur=5') no-repeat center center/cover;
+    height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+#hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+#hero .hero-content {
+    z-index: 1;
+    padding: 20px;
+}
+
+#hero h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+#hero p {
+    font-size: 1.2em;
+    margin-bottom: 20px;
+}
+
+/* About Section Styles */
+#about {
+    padding: 50px 0;
+}
+
+#about h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+}
+
+#about h3 {
+    margin-top: 30px;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.team-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.team-member {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.team-member img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+/* Services Section Styles */
+#services {
+    background-color: #111;
+    padding: 50px 0;
+}
+
+#services h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.service {
+    margin-bottom: 20px;
+    padding: 20px;
+    border: 1px solid #222;
+    border-radius: 5px;
+}
+
+.service h3 {
+    font-family: 'Orbitron', sans-serif;
+}
+
+.pricing-tiers {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.pricing-tier {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #222;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    width: 30%;
+}
+
+/* Portfolio Section Styles */
+#portfolio {
+    padding: 50px 0;
+}
+
+#portfolio h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+}
+
+.project {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.project img {
+    width: 100%;
+    max-width: 500px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.project h3 {
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Contact Section Styles */
+#contact {
+    background-color: #111;
+    padding: 50px 0;
+}
+
+#contact h2 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    text-align: center;
+    font-family: 'Orbitron', sans-serif;
+}
+
+#contact form {
+    width: 70%;
+    margin: auto;
+}
+
+#contact label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+#contact input, #contact textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #444;
+    background-color: #222;
+    color: #fff;
+    border-radius: 5px;
+}
+
+#contact button {
+    padding: 10px 20px;
+    background-color: #8b5cf6;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#contact button:hover {
+    background-color: #7c3aed;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        width: 90%;
+    }
+
+    header .container {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    header h1 {
+        margin-bottom: 10px;
+    }
+
+    header nav ul {
+        flex-direction: column;
+    }
+
+    header nav ul li {
+        margin-left: 0;
+        margin-bottom: 10px;
+    }
+
+    #hero {
+        height: auto;
+        padding: 100px 0;
+    }
+
+    #hero h1 {
+        font-size: 2.5em;
+    }
+
+    .pricing-tiers {
+        flex-direction: column;
+    }
+
+    .pricing-tier {
+        width: 80%;
+        margin: auto;
+        margin-bottom: 20px;
+    }
+
+    #contact form {
+        width: 90%;
+    }
+}
