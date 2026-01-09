@@ -106,8 +106,7 @@ export default function Categories() {
               'portfolio': '',
               'ecommerce': '',
               'blog': '',
-              'landing': '',
-              'dashboard': ''
+              'education': ''
             };
             const icon = icons[cat.slug] || '';
             

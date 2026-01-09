@@ -140,6 +140,12 @@ export default function AIHistory() {
                 <h2 style={styles.previewTitle}>Website Preview</h2>
                 <div style={styles.controlButtons}>
                   <button
+                    onClick={() => navigate(`/generated-website/${selectedWebsite.id}`)}
+                    style={styles.btnPrimary}
+                  >
+                    View Full Website
+                  </button>
+                  <button
                     onClick={() => handleDownload(selectedWebsite.id)}
                     style={styles.btnSecondary}
                   >

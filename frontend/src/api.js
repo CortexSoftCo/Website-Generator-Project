@@ -55,6 +55,7 @@ export const getAdminStats = () => api.get('/admin/stats');
 
 // AI Generator
 export const generateWebsite = (data) => api.post('/ai/generate', data);
+export const improvePrompt = (data) => api.post('/ai/improve-prompt', data);
 export const getUserAIWebsites = () => api.get('/ai/websites');
 export const getAIWebsite = (id) => api.get(`/ai/websites/${id}`);
 export const regenerateAIWebsite = (id, data) => api.post(`/ai/regenerate/${id}`, data);

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Course Details - TechElevate</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <div class="logo">
+        <a href="index.html">TechElevate</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+         <li><a href="index.html" class="nav-link">Home</a></li>
+         <li><a href="courses.html" class="nav-link active">Courses</a></li>
+         <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+         <li><a href="about.html" class="nav-link">About</a></li>
+         <li><a href="blog.html" class="nav-link">Blog</a></li>
+         <li><a href="contact.html" class="nav-link">Contact</a></li>
+         <li><a href="auth.html" class="nav-link auth-link">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="course-header">
+    <div class="container">
+      <div class="course-header-content">
+        <span class="course-tag advanced">Advanced</span>
+        <h1>Advanced Cloud Architecture Patterns</h1>
+        <p>Design and implement highly available, scalable, and fault-tolerant systems on AWS.</p>
+        <div class="course-meta">
+          <span><i class="fas fa-user-circle"></i> Taught by <strong>Alex Johnson</strong></span>
+          <span><i class="fas fa-star"></i> 4.9 (754 Ratings)</span>
+          <span><i class="fas fa-users"></i> 1,821 students enrolled</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="course-detail-layout">
+    <div class="container course-detail-container">
+      <div class="course-content">
+        <div class="course-section">
+            <h2>What you'll learn</h2>
+            <ul class="learning-objectives">
+              <li><i class="fas fa-check-circle"></i> Architect solutions for performance, security, and reliability.</li>
+              <li><i class="fas fa-check-circle"></i> Master design patterns like serverless, microservices, and event-driven architectures.</li>
+              <li><i class="fas fa-check-circle"></i> Implement disaster recovery and business continuity strategies in the cloud.</li>
+              <li><i class="fas fa-check-circle"></i> Optimize cloud costs without sacrificing performance.</li>
+            </ul>
+        </div>
+        
+        <div class="course-section">
+          <h2>Course Syllabus</h2>
+          <div class="syllabus">
+            <details class="syllabus-module" open>
+              <summary>Module 1: Foundations of Cloud Architecture</summary>
+              <ul>
+                <li><i class="far fa-play-circle"></i> 1.1 The Well-Architected Framework</li>
+                <li><i class="far fa-play-circle"></i> 1.2 Designing for High Availability</li>
+                <li><i class="far fa-file-alt"></i> Reading: AWS Architecture Best Practices</li>
+              </ul>
+            </details>
+            <details class="syllabus-module">
+              <summary>Module 2: Microservices & Serverless Patterns</summary>
+              <ul>
+                <li><i class="far fa-play-circle"></i> 2.1 Intro to Microservices on AWS</li>
+                <li><i class="far fa-play-circle"></i> 2.2 Building with AWS Lambda and API Gateway</li>
+                <li><i class="far fa-file-alt"></i> Project: Deploy a Serverless Application</li>
+              </ul>
+            </details>
+            <details class="syllabus-module">
+              <summary>Module 3: Data & Storage Architectures</summary>
+              <ul>
+                <li><i class="far fa-play-circle"></i> 3.1 Choosing the Right Database (SQL vs NoSQL)</li>
+                <li><i class="far fa-play-circle"></i> 3.2 Architecting Data Lakes</li>
+                <li><i class="far fa-file-alt"></i> Case Study: Netflix's Data Pipeline</li>
+              </ul>
+            </details>
+            <details class="syllabus-module">
+              <summary>Module 4: Advanced Networking & Security</summary>
+              <ul>
+                <li><i class="far fa-play-circle"></i> 4.1 Multi-Region VPC Design</li>
+                <li><i class="far fa-play-circle"></i> 4.2 Security Best Practices and IAM</li>
+                <li><i class="far fa-file-alt"></i> Final Project: Architect a Secure Enterprise Solution</li>
+              </ul>
+            </details>
+          </div>
+        </div>
+
+        <div class="course-section instructor-bio-section">
+          <h2>About the Instructor</h2>
+          <div class="instructor-bio">
+              <img src="https://picsum.photos/id/237/150/150" alt="Alex Johnson">
+              <div>
+                  <h4>Alex Johnson</h4>
+                  <p class="instructor-title">Principal Cloud Architect</p>
+                  <p>Alex is a certified AWS Solutions Architect Professional with over 15 years of experience designing and building large-scale distributed systems. He has helped Fortune 500 companies migrate to the cloud and is passionate about sharing his real-world knowledge.</p>
+              </div>
+          </div>
+        </div>
+
+        <div class="course-section">
+          <h2>Student Reviews</h2>
+          <div class="reviews-list">
+            <div class="review-card">
+              <div class="review-author">
+                <img src="https://picsum.photos/id/64/50/50" alt="Student review author">
+                <div>
+                  <h5>Michael B.</h5>
+                  <span class="review-rating">★★★★★</span>
+                </div>
+              </div>
+              <p>This is the definitive course on cloud architecture. Alex breaks down complex topics into understandable concepts. The final project was challenging but incredibly rewarding.</p>
+            </div>
+            <div class="review-card">
+              <div class="review-author">
+                <img src="https://picsum.photos/id/65/50/50" alt="Student review author">
+                <div>
+                  <h5>Sarah K.</h5>
+                  <span class="review-rating">★★★★★</span>
+                </div>
+              </div>
+              <p>I passed my Solutions Architect Professional exam thanks to this course. The content is far more practical than just reading documentation. 10/10.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <aside class="course-sidebar">
+        <div class="card course-purchase-card">
+          <div class="course-video-preview">
+            <img src="https://picsum.photos/id/0/800/450" alt="Course video preview">
+            <i class="fas fa-play-circle"></i>
+            <span>Preview this course</span>
+          </div>
+          <div class="course-purchase-details">
+            <span class="course-price">$249.99</span>
+            <button class="btn btn-primary btn-full">Enroll Now</button>
+            <p class="money-back-guarantee">30-Day Money-Back Guarantee</p>
+            <h4>This course includes:</h4>
+            <ul>
+              <li><i class="fas fa-video"></i> 22 hours on-demand video</li>
+              <li><i class="fas fa-file-download"></i> 15 downloadable resources</li>
+              <li><i class="fas fa-infinity"></i> Full lifetime access</li>
+              <li><i class="fas fa-trophy"></i> Certificate of completion</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-container">
+        <div class="footer-about">
+            <h3>TechElevate</h3>
+            <p>Empowering the next generation of tech leaders with accessible, cutting-edge education.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-social">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 TechElevate. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

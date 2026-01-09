@@ -1,4 +1,4 @@
-// Modern Color Scheme for TemplateHub
+// Modern Color Scheme for CreatorBox
 // Professional navy blues, cyan accents, and clean UI
 
 export const colors = {
@@ -99,7 +99,7 @@ export const icons = {
 };
 
 // Brand Name
-export const brandName = 'TemplateHub';
+export const brandName = 'CreatorBox';
 export const brandTagline = 'Professional Templates. Powered by AI.';
 
 export default { colors, icons, brandName, brandTagline };

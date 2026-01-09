@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useAuthStore } from '../store';
-import { generateWebsite, regenerateAIWebsite } from '../api';
+import { generateWebsite, regenerateAIWebsite, improvePrompt } from '../api';
 import { useNavigate, Link } from 'react-router-dom';
 
 export default function AIBuilder() {
@@ -8,6 +8,7 @@ export default function AIBuilder() {
   const navigate = useNavigate();
   const [description, setDescription] = useState('');
   const [loading, setLoading] = useState(false);
+  const [improvingPrompt, setImprovingPrompt] = useState(false);
   const [generatedWebsite, setGeneratedWebsite] = useState(null);
   const [error, setError] = useState('');
   const [editMode, setEditMode] = useState(false);
@@ -55,6 +56,31 @@ export default function AIBuilder() {
     return html;
   };
 
+  const handleImprovePrompt = async () => {
+    if (!user) {
+      navigate('/login');
+      return;
+    }
+
+    if (!description.trim()) {
+      setError('Please enter a description first');
+      return;
+    }
+
+    setImprovingPrompt(true);
+    setError('');
+
+    try {
+      const res = await improvePrompt({ prompt: description });
+      setDescription(res.data.improved_prompt);
+      setError('');
+    } catch (err) {
+      setError(err.response?.data?.error || 'Failed to improve prompt');
+    } finally {
+      setImprovingPrompt(false);
+    }
+  };
+
   const handleGenerate = async (e) => {
     e.preventDefault();
     
@@ -76,6 +102,11 @@ export default function AIBuilder() {
     try {
       const res = await generateWebsite({ description });
       setGeneratedWebsite(res.data);
+      
+      // Navigate to the generated website page
+      if (res.data.website?.id) {
+        navigate(`/generated-website/${res.data.website.id}`);
+      }
     } catch (err) {
       setError(err.response?.data?.error || 'Failed to generate website');
     } finally {
@@ -175,6 +206,15 @@ export default function AIBuilder() {
               rows="8"
               required
             />
+            
+            <button
+              type="button"
+              onClick={handleImprovePrompt}
+              style={styles.improveBtn}
+              disabled={improvingPrompt || !description.trim()}
+            >
+              {improvingPrompt ? '✨ Improving...' : '✨ Improve Prompt with AI'}
+            </button>
             
             <div style={styles.tips}>
               <h3 style={styles.tipsTitle}>Tips for best results:</h3>
@@ -301,7 +341,7 @@ const styles = {
     marginBottom: '40px'
   },
   historyBtn: {
-    background: 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)',
+    background: '#079EBE',
     color: '#fff',
     padding: '12px 24px',
     borderRadius: '8px',
@@ -397,6 +437,23 @@ const styles = {
     marginTop: '8px',
     boxShadow: '0 6px 20px rgba(6, 182, 212, 0.3)',
     transition: 'all 0.3s ease'
+  },
+  improveBtn: {
+    background: '#079EBE',
+    color: '#ffffff',
+    padding: '12px 20px',
+    borderRadius: '8px',
+    border: 'none',
+    fontSize: '15px',
+    fontWeight: '600',
+    cursor: 'pointer',
+    marginTop: '12px',
+    boxShadow: '0 4px 12px rgba(168, 85, 247, 0.3)',
+    transition: 'all 0.3s ease',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: '8px'
   },
   right: {
     display: 'flex',

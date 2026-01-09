@@ -72,7 +72,7 @@ const styles = {
   },
   imageWrapper: {
     width: '100%',
-    height: '220px',
+    height: '180px',
     overflow: 'hidden',
     background: 'linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 100%)',
     position: 'relative'
@@ -110,22 +110,22 @@ const styles = {
     border: '2px solid #06b6d4'
   },
   content: {
-    padding: '24px',
+    padding: '20px',
     background: '#ffffff'
   },
   title: {
-    fontSize: '20px',
+    fontSize: '18px',
     fontWeight: '700',
-    marginBottom: '10px',
+    marginBottom: '8px',
     color: '#1e293b',
     letterSpacing: '0.3px'
   },
   description: {
     fontSize: '14px',
     color: '#64748b',
-    marginBottom: '18px',
+    marginBottom: '14px',
     lineHeight: '1.6',
-    minHeight: '42px'
+    minHeight: '38px'
   },
   footer: {
     display: 'flex',

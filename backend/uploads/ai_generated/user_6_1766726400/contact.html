@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us | FlowForge Solutions</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <div class="logo">
+        <a href="index.html">FlowForge</a>
+      </div>
+      <button class="nav-toggle" id="navToggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+         <li><a href="index.html" class="nav-link">Index</a></li>
+         <li><a href="home.html" class="nav-link">Home</a></li>
+         <li><a href="about.html" class="nav-link">About</a></li>
+         <li><a href="services.html" class="nav-link">Services</a></li>
+         <li><a href="case-studies.html" class="nav-link">Case-studies</a></li>
+         <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+         <li><a href="blog.html" class="nav-link">Blog</a></li>
+         <li><a href="faq.html" class="nav-link">Faq</a></li>
+         <li><a href="contact.html" class="nav-link active">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="container">
+        <h1>Let's Start a Conversation</h1>
+        <p>Fill out the form below or schedule a call directly. We're excited to learn about your business.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="contact-section">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-form-container card">
+                    <h3>Send Us a Message</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                         <div class="form-group">
+                            <label for="service">Service of Interest</label>
+                            <select id="service" name="service">
+                                <option value="">-- Please Select --</option>
+                                <option value="bpa">Business Process Automation</option>
+                                <option value="crm">CRM & Sales Automation</option>
+                                <option value="api">Custom API Integration</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Your Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit Inquiry</button>
+                    </form>
+                </div>
+                <div class="contact-info-container">
+                    <div class="contact-info-block card">
+                        <h3>Contact Details</h3>
+                        <p><i class="fas fa-map-marker-alt"></i> 123 Automation Ave, Tech City, 12345</p>
+                        <p><i class="fas fa-phone"></i> (555) 123-4567</p>
+                        <p><i class="fas fa-envelope"></i> hello@flowforge.solutions</p>
+                    </div>
+                    <div class="contact-calendar-block card">
+                        <h3>Schedule a Call Instantly</h3>
+                        <p>Skip the form and book a free 30-minute discovery call directly on our calendar.</p>
+                        <!-- Calendly embed placeholder -->
+                        <div class="calendly-placeholder">
+                          <img src="https://picsum.photos/id/431/1200/800" alt="Calendar placeholder">
+                          <a href="#" class="btn btn-primary">Book Your Call</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>FlowForge</h3>
+          <p>Automating success for small and medium-sized businesses worldwide.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Navigate</h4>
+          <ul>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="case-studies.html">Case Studies</a></li>
+            <li><a href="blog.html">Blog</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <ul>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Connect With Us</h4>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 FlowForge Solutions. All Rights Reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

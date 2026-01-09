@@ -7,7 +7,7 @@ export default function Footer() {
         <div style={styles.grid}>
           <div style={styles.column}>
             <h3 style={styles.title}>
-              Template<span style={styles.titleAccent}>Hub</span>
+              Creator<span style={styles.titleAccent}>Box</span>
             </h3>
             <p style={styles.text}>
               Professional website templates and AI-powered website builder
@@ -30,14 +30,14 @@ export default function Footer() {
           
           <div style={styles.column}>
             <h4 style={styles.heading}>Connect</h4>
-            <p style={styles.text}>Email: support@templatehub.com</p>
-            <p style={styles.text}>Follow us on social media</p>
+            <p style={styles.text}>Email: cortexsoft@gmail.com</p>
+            {/* <p style={styles.text}>Follow us on social media</p> */}
           </div>
         </div>
         
         <div style={styles.bottom}>
           <p style={styles.copyright}>
-            © {new Date().getFullYear()} TemplateHub. All rights reserved.
+            © {new Date().getFullYear()} CreatorBox. All rights reserved.
           </p>
         </div>
       </div>

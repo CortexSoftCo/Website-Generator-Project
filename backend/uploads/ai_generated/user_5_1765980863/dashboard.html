@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Dashboard - TechElevate</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <div class="logo">
+        <a href="index.html">TechElevate</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+         <li><a href="index.html" class="nav-link">Home</a></li>
+         <li><a href="courses.html" class="nav-link">Courses</a></li>
+         <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+         <li><a href="about.html" class="nav-link">About</a></li>
+         <li><a href="blog.html" class="nav-link">Blog</a></li>
+         <li><a href="contact.html" class="nav-link">Contact</a></li>
+         <li><a href="auth.html" class="nav-link auth-link">Logout</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="container">
+      <h1>Welcome Back, Jane!</h1>
+      <p>Your learning journey continues here. Let's pick up where you left off.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="dashboard-section">
+      <div class="container dashboard-layout">
+        <aside class="dashboard-sidebar">
+          <div class="dashboard-profile">
+            <img src="https://picsum.photos/id/177/100/100" alt="Jane Doe">
+            <h4>Jane Doe</h4>
+            <p>Pro Annual Member</p>
+          </div>
+          <ul class="dashboard-menu">
+            <li class="active"><a href="#"><i class="fas fa-book-open"></i> My Courses</a></li>
+            <li><a href="#"><i class="fas fa-certificate"></i> Certificates</a></li>
+            <li><a href="#"><i class="fas fa-user-cog"></i> Account Settings</a></li>
+            <li><a href="#"><i class="fas fa-question-circle"></i> Help & Support</a></li>
+          </ul>
+        </aside>
+
+        <div class="dashboard-content">
+          <div class="dashboard-block">
+            <h2>My Courses</h2>
+            <div class="enrolled-courses-grid">
+              <!-- Enrolled Course Card 1 -->
+              <div class="card enrolled-course-card">
+                <img src="https://picsum.photos/id/0/600/400" alt="Advanced Cloud Architecture">
+                <div class="enrolled-course-info">
+                  <h3>Advanced Cloud Architecture Patterns</h3>
+                  <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 75%;"></div>
+                  </div>
+                  <p>75% Complete</p>
+                  <a href="course-detail.html" class="btn btn-primary">Continue Learning</a>
+                </div>
+              </div>
+
+              <!-- Enrolled Course Card 2 -->
+              <div class="card enrolled-course-card">
+                <img src="https://picsum.photos/id/367/600/400" alt="Introduction to MLOps">
+                <div class="enrolled-course-info">
+                  <h3>Introduction to MLOps</h3>
+                  <div class="progress-bar-container">
+                    <div class="progress-bar" style="width: 20%;"></div>
+                  </div>
+                  <p>20% Complete</p>
+                  <a href="course-detail.html" class="btn btn-primary">Continue Learning</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="dashboard-block">
+            <h2>My Certificates</h2>
+            <div class="certificates-list">
+              <div class="certificate-item">
+                <i class="fas fa-trophy"></i>
+                <div class="certificate-info">
+                  <h4>AWS Certified Cloud Practitioner Prep Course</h4>
+                  <p>Completed on June 15, 2024</p>
+                </div>
+                <a href="#" class="btn btn-secondary">Download</a>
+              </div>
+            </div>
+            <p class="no-certificates-placeholder" style="display:none;">You haven't earned any certificates yet. Complete a course to get started!</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-container">
+        <div class="footer-about">
+            <h3>TechElevate</h3>
+            <p>Empowering the next generation of tech leaders with accessible, cutting-edge education.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-social">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 TechElevate. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

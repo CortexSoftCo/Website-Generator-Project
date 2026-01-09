@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Us - TechElevate</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <div class="logo">
+        <a href="index.html">TechElevate</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+         <li><a href="index.html" class="nav-link">Home</a></li>
+         <li><a href="courses.html" class="nav-link">Courses</a></li>
+         <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+         <li><a href="about.html" class="nav-link">About</a></li>
+         <li><a href="blog.html" class="nav-link">Blog</a></li>
+         <li><a href="contact.html" class="nav-link active">Contact</a></li>
+         <li><a href="auth.html" class="nav-link auth-link">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="container">
+      <h1>Get in Touch</h1>
+      <p>We'd love to hear from you. Whether you have a question about courses, pricing, or anything else, our team is ready to answer all your questions.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="contact-section">
+      <div class="container contact-layout">
+        <div class="contact-form-container card animate-in">
+          <h2>Send us a Message</h2>
+          <form id="contactForm">
+            <div class="form-group">
+              <label for="name">Full Name</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <input type="text" id="subject" name="subject" required>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" rows="5" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-full">Submit Message</button>
+          </form>
+        </div>
+        <div class="contact-info-container animate-in">
+          <div class="contact-info-block">
+            <h3>Contact Information</h3>
+            <p>Our support team is available Monday to Friday, 9am to 5pm EST.</p>
+            <ul class="contact-details-list">
+              <li><i class="fas fa-map-marker-alt"></i> 123 Tech Avenue, Silicon Valley, CA 94043</li>
+              <li><i class="fas fa-phone"></i> (123) 456-7890</li>
+              <li><i class="fas fa-envelope"></i> support@techelevate.com</li>
+            </ul>
+          </div>
+          <div class="contact-map-placeholder">
+              <img src="https://picsum.photos/id/431/800/600" alt="Abstract communication concept image">
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-container">
+        <div class="footer-about">
+            <h3>TechElevate</h3>
+            <p>Empowering the next generation of tech leaders with accessible, cutting-edge education.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-social">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 TechElevate. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

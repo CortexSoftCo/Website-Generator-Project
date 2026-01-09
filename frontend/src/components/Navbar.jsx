@@ -16,12 +16,13 @@ export default function Navbar() {
       <div style={styles.container}>
         <Link to="/" style={styles.logo}>
           <span style={styles.logoIcon}>⬡</span>
-          TemplateHub
+          CreatorBox
         </Link>
         
         <div style={styles.links}>
           <Link to="/categories" style={styles.link}>Categories</Link>
           <Link to="/ai-builder" style={styles.link}>AI Builder</Link>
+          <Link to="/contact" style={styles.link}>Contact</Link>
           
           {!user ? (
             <>

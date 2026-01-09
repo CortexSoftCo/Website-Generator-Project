@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog - TechElevate</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="container nav-container">
+      <div class="logo">
+        <a href="index.html">TechElevate</a>
+      </div>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-menu" id="navMenu">
+         <li><a href="index.html" class="nav-link">Home</a></li>
+         <li><a href="courses.html" class="nav-link">Courses</a></li>
+         <li><a href="pricing.html" class="nav-link">Pricing</a></li>
+         <li><a href="about.html" class="nav-link">About</a></li>
+         <li><a href="blog.html" class="nav-link active">Blog</a></li>
+         <li><a href="contact.html" class="nav-link">Contact</a></li>
+         <li><a href="auth.html" class="nav-link auth-link">Login</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <header class="page-header">
+    <div class="container">
+      <h1>Tech Insights & Career Advice</h1>
+      <p>Stay ahead of the curve with the latest trends, tutorials, and industry news.</p>
+    </div>
+  </header>
+
+  <main>
+    <section class="blog-section">
+      <div class="container blog-layout">
+        <div class="blog-posts-grid">
+          <!-- Blog Post Card 1 -->
+          <div class="card blog-post-card animate-in">
+            <a href="#" class="blog-post-image-link">
+              <img src="https://picsum.photos/id/487/600/400" alt="Cloud computing infrastructure">
+            </a>
+            <div class="blog-post-content">
+              <div class="blog-post-meta">
+                <span class="blog-post-category">Cloud Computing</span>
+                <span class="blog-post-date">July 15, 2024</span>
+              </div>
+              <h3><a href="#">Top 5 AWS Services You Should Master in 2024</a></h3>
+              <p>The cloud landscape is constantly evolving. Discover the key AWS services that are in high demand and will give your career a significant boost...</p>
+              <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Blog Post Card 2 -->
+          <div class="card blog-post-card animate-in">
+            <a href="#" class="blog-post-image-link">
+              <img src="https://picsum.photos/id/180/600/400" alt="No-code development interface">
+            </a>
+            <div class="blog-post-content">
+              <div class="blog-post-meta">
+                <span class="blog-post-category">No-Code</span>
+                <span class="blog-post-date">July 10, 2024</span>
+              </div>
+              <h3><a href="#">Is No-Code the Future of Web Development?</a></h3>
+              <p>The rise of no-code platforms is changing how we build applications. We explore the pros, cons, and when you should choose no-code for your next project...</p>
+              <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+
+          <!-- Blog Post Card 3 -->
+          <div class="card blog-post-card animate-in">
+            <a href="#" class="blog-post-image-link">
+              <img src="https://picsum.photos/id/367/600/400" alt="MLOps workflow diagram">
+            </a>
+            <div class="blog-post-content">
+              <div class="blog-post-meta">
+                <span class="blog-post-category">MLOps</span>
+                <span class="blog-post-date">July 5, 2024</span>
+              </div>
+              <h3><a href="#">A Beginner's Guide to Building an MLOps Pipeline</a></h3>
+              <p>MLOps can seem daunting. This step-by-step guide breaks down the core components of a production-ready machine learning pipeline...</p>
+              <a href="#" class="read-more-link">Read More <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+          
+          <!-- More cards can be added here -->
+
+        </div>
+        <aside class="blog-sidebar">
+          <div class="sidebar-widget">
+            <h4>Categories</h4>
+            <ul class="category-list">
+              <li><a href="#">Cloud Computing</a></li>
+              <li><a href="#">MLOps</a></li>
+              <li><a href="#">No-Code Development</a></li>
+              <li><a href="#">Career Advice</a></li>
+              <li><a href="#">Industry News</a></li>
+            </ul>
+          </div>
+          <div class="sidebar-widget">
+            <h4>Recent Posts</h4>
+            <ul class="recent-posts-list">
+              <li><a href="#">Top 5 AWS Services...</a></li>
+              <li><a href="#">Is No-Code the Future...</a></li>
+              <li><a href="#">A Beginner's Guide to MLOps...</a></li>
+            </ul>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-container">
+        <div class="footer-about">
+            <h3>TechElevate</h3>
+            <p>Empowering the next generation of tech leaders with accessible, cutting-edge education.</p>
+        </div>
+        <div class="footer-links">
+            <h4>Quick Links</h4>
+            <ul>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="courses.html">Courses</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+        <div class="footer-social">
+            <h4>Follow Us</h4>
+            <div class="social-icons">
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <p>&copy; 2024 TechElevate. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

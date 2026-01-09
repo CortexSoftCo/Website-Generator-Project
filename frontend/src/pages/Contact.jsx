@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Mail, Phone, MapPin, Send, CheckCircle, AlertCircle, MessageSquare } from 'lucide-react';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -7,207 +8,562 @@ export default function Contact() {
     subject: '',
     message: ''
   });
-  const [submitted, setSubmitted] = useState(false);
+  const [status, setStatus] = useState('idle'); // idle, loading, success, error
+  const [responseMessage, setResponseMessage] = useState('');
 
-  const handleSubmit = (e) => {
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value
+    });
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // In production, send to backend API
-    console.log('Contact form submitted:', formData);
-    setSubmitted(true);
-    setFormData({ name: '', email: '', subject: '', message: '' });
-    setTimeout(() => setSubmitted(false), 3000);
+    setStatus('loading');
+
+    try {
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          access_key: '08e7caa8-b0c1-4ac2-b96c-4df2aa44898c', // Replace with your actual key
+          name: formData.name,
+          email: formData.email,
+          subject: formData.subject,
+          message: formData.message,
+          from_name: 'CreatorBox Contact Form'
+        })
+      });
+
+      const result = await response.json();
+
+      if (result.success) {
+        setStatus('success');
+        setResponseMessage('Thank you for contacting us! We\'ll get back to you soon.');
+        setFormData({ name: '', email: '', subject: '', message: '' });
+        
+        // Reset success message after 5 seconds
+        setTimeout(() => {
+          setStatus('idle');
+          setResponseMessage('');
+        }, 5000);
+      } else {
+        setStatus('error');
+        setResponseMessage('Something went wrong. Please try again.');
+      }
+    } catch (error) {
+      setStatus('error');
+      setResponseMessage('Failed to send message. Please try again later.');
+    }
   };
 
   return (
-    <div style={styles.container}>
-      <div style={styles.header}>
-        <h1 style={styles.title}>Contact Us</h1>
-        <p style={styles.subtitle}>We'd love to hear from you</p>
-      </div>
+    <div style={styles.wrapper}>
+      {/* Hero Section */}
+      <section style={styles.hero}>
+        <div style={styles.heroOverlay}></div>
+        <div style={styles.heroShapes}>
+          <div style={styles.heroShape1}></div>
+          <div style={styles.heroShape2}></div>
+        </div>
+        
+        <div style={styles.heroContent}>
+          <div style={styles.heroBadge}>
+            <MessageSquare size={14} style={{marginRight: '8px'}} />
+            Get In Touch
+          </div>
+          <h1 style={styles.heroTitle}>
+            Contact <span style={styles.heroTitleAccent}>Us</span>
+          </h1>
+          <p style={styles.heroText}>
+            Have questions? We'd love to hear from you. Send us a message and we'll respond as soon as possible.
+          </p>
+        </div>
+      </section>
 
-      <div style={styles.content}>
-        <div style={styles.left}>
-          <h2 style={styles.sectionTitle}>Get in Touch</h2>
-          <div style={styles.info}>
-            <div style={styles.infoItem}>
-              <h3 style={styles.infoTitle}>Email</h3>
-              <p style={styles.infoText}>support@templatemarket.com</p>
+      {/* Contact Section */}
+      <section style={styles.contactSection}>
+        <div style={styles.container}>
+          <div style={styles.grid}>
+            {/* Contact Info */}
+            <div style={styles.infoColumn}>
+              <h2 style={styles.sectionTitle}>Let's Talk</h2>
+              <p style={styles.infoText}>
+                Whether you have a question about features, pricing, need a demo, or anything else, our team is ready to answer all your questions.
+              </p>
+
+              <div style={styles.contactCards}>
+                <div style={styles.contactCard}>
+                  <div style={styles.iconWrapper}>
+                    <Mail size={24} color="#06b6d4" />
+                  </div>
+                  <div>
+                    <h3 style={styles.contactCardTitle}>Email</h3>
+                    <p style={styles.contactCardText}>cortexsoft@gmail.com</p>
+                  </div>
+                </div>
+
+                <div style={styles.contactCard}>
+                  <div style={styles.iconWrapper}>
+                    <Phone size={24} color="#10b981" />
+                  </div>
+                  <div>
+                    <h3 style={styles.contactCardTitle}>Phone</h3>
+                    <p style={styles.contactCardText}>+92 (300) 123-4567</p>
+                  </div>
+                </div>
+
+                <div style={styles.contactCard}>
+                  <div style={styles.iconWrapper}>
+                    <MapPin size={24} color="#8b5cf6" />
+                  </div>
+                  <div>
+                    <h3 style={styles.contactCardTitle}>Location</h3>
+                    <p style={styles.contactCardText}>Islamabad, Pakistan</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Additional Info */}
+              <div style={styles.additionalInfo}>
+                <h3 style={styles.additionalTitle}>Business Hours</h3>
+                <p style={styles.additionalText}>Monday - Friday: 9:00 AM - 6:00 PM</p>
+                <p style={styles.additionalText}>Saturday: 10:00 AM - 4:00 PM</p>
+                <p style={styles.additionalText}>Sunday: Closed</p>
+              </div>
             </div>
-            <div style={styles.infoItem}>
-              <h3 style={styles.infoTitle}>Business Hours</h3>
-              <p style={styles.infoText}>Monday - Friday: 9:00 AM - 6:00 PM</p>
-            </div>
-            <div style={styles.infoItem}>
-              <h3 style={styles.infoTitle}>Response Time</h3>
-              <p style={styles.infoText}>We typically respond within 24 hours</p>
+
+            {/* Contact Form */}
+            <div style={styles.formColumn}>
+              <div style={styles.formCard}>
+                <h2 style={styles.formTitle}>Send us a Message</h2>
+                <p style={styles.formSubtitle}>Fill out the form below and we'll get back to you shortly</p>
+
+                {/* Status Messages */}
+                {status === 'success' && (
+                  <div style={styles.successAlert}>
+                    <CheckCircle size={20} />
+                    <span>{responseMessage}</span>
+                  </div>
+                )}
+
+                {status === 'error' && (
+                  <div style={styles.errorAlert}>
+                    <AlertCircle size={20} />
+                    <span>{responseMessage}</span>
+                  </div>
+                )}
+
+                <form onSubmit={handleSubmit} style={styles.form}>
+                  <div style={styles.formGroup}>
+                    <label style={styles.label}>Full Name *</label>
+                    <input
+                      type="text"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      placeholder="John Doe"
+                      style={styles.input}
+                    />
+                  </div>
+
+                  <div style={styles.formGroup}>
+                    <label style={styles.label}>Email Address *</label>
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      placeholder="john@example.com"
+                      style={styles.input}
+                    />
+                  </div>
+
+                  <div style={styles.formGroup}>
+                    <label style={styles.label}>Subject *</label>
+                    <input
+                      type="text"
+                      name="subject"
+                      value={formData.subject}
+                      onChange={handleChange}
+                      required
+                      placeholder="How can we help you?"
+                      style={styles.input}
+                    />
+                  </div>
+
+                  <div style={styles.formGroup}>
+                    <label style={styles.label}>Message *</label>
+                    <textarea
+                      name="message"
+                      value={formData.message}
+                      onChange={handleChange}
+                      required
+                      placeholder="Tell us more about your inquiry..."
+                      rows="6"
+                      style={styles.textarea}
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={status === 'loading'}
+                    style={{
+                      ...styles.submitBtn,
+                      ...(status === 'loading' ? styles.submitBtnDisabled : {})
+                    }}
+                    onMouseEnter={(e) => {
+                      if (status !== 'loading') {
+                        e.currentTarget.style.transform = 'translateY(-2px)';
+                        e.currentTarget.style.boxShadow = '0 10px 30px rgba(6, 182, 212, 0.4)';
+                      }
+                    }}
+                    onMouseLeave={(e) => {
+                      if (status !== 'loading') {
+                        e.currentTarget.style.transform = 'translateY(0)';
+                        e.currentTarget.style.boxShadow = '0 6px 20px rgba(6, 182, 212, 0.3)';
+                      }
+                    }}
+                  >
+                    {status === 'loading' ? (
+                      <>
+                        <span style={styles.spinner}></span>
+                        Sending...
+                      </>
+                    ) : (
+                      <>
+                        <Send size={18} style={{marginRight: '8px'}} />
+                        Send Message
+                      </>
+                    )}
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
-
-        <div style={styles.right}>
-          <form onSubmit={handleSubmit} style={styles.form}>
-            {submitted && (
-              <div style={styles.success}>
-                Thank you! We'll get back to you soon.
-              </div>
-            )}
-            
-            <input
-              type="text"
-              placeholder="Your Name"
-              value={formData.name}
-              onChange={(e) => setFormData({...formData, name: e.target.value})}
-              style={styles.input}
-              required
-            />
-            
-            <input
-              type="email"
-              placeholder="Your Email"
-              value={formData.email}
-              onChange={(e) => setFormData({...formData, email: e.target.value})}
-              style={styles.input}
-              required
-            />
-            
-            <input
-              type="text"
-              placeholder="Subject"
-              value={formData.subject}
-              onChange={(e) => setFormData({...formData, subject: e.target.value})}
-              style={styles.input}
-              required
-            />
-            
-            <textarea
-              placeholder="Your Message"
-              value={formData.message}
-              onChange={(e) => setFormData({...formData, message: e.target.value})}
-              style={styles.textarea}
-              rows="6"
-              required
-            />
-            
-            <button type="submit" style={styles.button}>
-              Send Message
-            </button>
-          </form>
-        </div>
-      </div>
+      </section>
     </div>
   );
 }
 
 const styles = {
-  container: {
-    maxWidth: '1000px',
-    margin: '0 auto',
-    padding: '60px 20px'
+  wrapper: {
+    minHeight: '100vh',
+    background: '#ffffff',
   },
-  header: {
+
+  // Hero Styles
+  hero: {
+    position: 'relative',
+    background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%)',
+    padding: '120px 20px 80px',
+    overflow: 'hidden',
+    borderBottom: '1px solid rgba(6, 182, 212, 0.2)',
+  },
+  heroOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: 'radial-gradient(circle at 50% 50%, rgba(6, 182, 212, 0.1), transparent)',
+    pointerEvents: 'none',
+  },
+  heroShapes: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    overflow: 'hidden',
+  },
+  heroShape1: {
+    position: 'absolute',
+    top: '-10%',
+    right: '-5%',
+    width: '500px',
+    height: '500px',
+    background: 'radial-gradient(circle, rgba(6, 182, 212, 0.15), transparent 70%)',
+    borderRadius: '50%',
+    filter: 'blur(60px)',
+  },
+  heroShape2: {
+    position: 'absolute',
+    bottom: '-10%',
+    left: '-5%',
+    width: '400px',
+    height: '400px',
+    background: 'radial-gradient(circle, rgba(139, 92, 246, 0.15), transparent 70%)',
+    borderRadius: '50%',
+    filter: 'blur(60px)',
+  },
+  heroContent: {
+    position: 'relative',
+    zIndex: 1,
     textAlign: 'center',
-    marginBottom: '60px'
+    maxWidth: '800px',
+    margin: '0 auto',
   },
-  title: {
-    fontSize: '48px',
-    fontWeight: '700',
-    marginBottom: '16px',
-    color: '#1e293b'
+  heroBadge: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    padding: '8px 20px',
+    background: 'rgba(6, 182, 212, 0.1)',
+    border: '1px solid rgba(6, 182, 212, 0.3)',
+    borderRadius: '50px',
+    color: '#06b6d4',
+    fontSize: '14px',
+    fontWeight: '500',
+    marginBottom: '24px',
+    backdropFilter: 'blur(10px)',
   },
-  subtitle: {
+  heroTitle: {
+    fontSize: '56px',
+    fontWeight: '800',
+    color: '#ffffff',
+    marginBottom: '24px',
+    lineHeight: '1.2',
+  },
+  heroTitleAccent: {
+    background: 'linear-gradient(135deg, #06b6d4 0%, #8b5cf6 100%)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
+  },
+  heroText: {
     fontSize: '20px',
-    color: '#64748b'
+    color: '#94a3b8',
+    lineHeight: '1.6',
+    maxWidth: '600px',
+    margin: '0 auto',
   },
-  content: {
+
+  // Contact Section
+  contactSection: {
+    padding: '80px 20px',
+    background: '#ffffff',
+  },
+  container: {
+    maxWidth: '1200px',
+    margin: '0 auto',
+  },
+  grid: {
     display: 'grid',
-    gridTemplateColumns: '1fr 1fr',
-    gap: '40px'
+    gridTemplateColumns: 'repeat(auto-fit, minmax(450px, 1fr))',
+    gap: '60px',
+    alignItems: 'start',
   },
-  left: {
+
+  // Info Column
+  infoColumn: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '32px'
+    gap: '32px',
   },
   sectionTitle: {
-    fontSize: '28px',
-    fontWeight: '600',
-    marginBottom: '24px',
-    color: '#1e293b'
-  },
-  info: {
-    display: 'flex',
-    flexDirection: 'column',
-    gap: '24px'
-  },
-  infoItem: {
-    padding: '24px',
-    background: '#ffffff',
-    borderRadius: '8px',
-    border: '1px solid rgba(226, 232, 240, 0.8)',
-    boxShadow: '0 2px 8px rgba(15, 23, 42, 0.12)'
-  },
-  infoTitle: {
-    fontSize: '18px',
-    fontWeight: '600',
-    marginBottom: '8px',
-    color: '#1e293b'
+    fontSize: '40px',
+    fontWeight: '700',
+    color: '#0f172a',
+    marginBottom: '16px',
   },
   infoText: {
-    fontSize: '14px',
-    color: '#64748b'
+    fontSize: '18px',
+    color: '#64748b',
+    lineHeight: '1.6',
   },
-  right: {
+  contactCards: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '16px',
+  },
+  contactCard: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '20px',
+    padding: '24px',
+    background: '#f8fafc',
+    borderRadius: '16px',
+    border: '1px solid #e2e8f0',
+    transition: 'all 0.3s ease',
+    cursor: 'pointer',
+  },
+  iconWrapper: {
+    width: '56px',
+    height: '56px',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    background: '#ffffff',
+    borderRadius: '12px',
+    border: '1px solid #e2e8f0',
+  },
+  contactCardTitle: {
+    fontSize: '16px',
+    fontWeight: '600',
+    color: '#0f172a',
+    marginBottom: '4px',
+  },
+  contactCardText: {
+    fontSize: '15px',
+    color: '#64748b',
+  },
+  additionalInfo: {
+    padding: '24px',
+    background: 'linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%)',
+    borderRadius: '16px',
+    border: '1px solid #cbd5e1',
+  },
+  additionalTitle: {
+    fontSize: '18px',
+    fontWeight: '600',
+    color: '#0f172a',
+    marginBottom: '12px',
+  },
+  additionalText: {
+    fontSize: '15px',
+    color: '#64748b',
+    marginBottom: '8px',
+  },
+
+  // Form Column
+  formColumn: {
+    display: 'flex',
+    flexDirection: 'column',
+  },
+  formCard: {
     background: '#ffffff',
     padding: '40px',
-    borderRadius: '12px',
-    border: '1px solid rgba(226, 232, 240, 0.8)',
-    boxShadow: '0 4px 16px rgba(15, 23, 42, 0.12)'
+    borderRadius: '24px',
+    border: '1px solid #e2e8f0',
+    boxShadow: '0 10px 40px rgba(0, 0, 0, 0.05)',
   },
+  formTitle: {
+    fontSize: '32px',
+    fontWeight: '700',
+    color: '#0f172a',
+    marginBottom: '8px',
+  },
+  formSubtitle: {
+    fontSize: '16px',
+    color: '#64748b',
+    marginBottom: '32px',
+  },
+
+  // Alerts
+  successAlert: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+    padding: '16px 20px',
+    background: 'rgba(16, 185, 129, 0.1)',
+    border: '1px solid rgba(16, 185, 129, 0.3)',
+    borderRadius: '12px',
+    color: '#059669',
+    fontSize: '15px',
+    fontWeight: '500',
+    marginBottom: '24px',
+  },
+  errorAlert: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: '12px',
+    padding: '16px 20px',
+    background: 'rgba(239, 68, 68, 0.1)',
+    border: '1px solid rgba(239, 68, 68, 0.3)',
+    borderRadius: '12px',
+    color: '#dc2626',
+    fontSize: '15px',
+    fontWeight: '500',
+    marginBottom: '24px',
+  },
+
+  // Form Styles
   form: {
     display: 'flex',
     flexDirection: 'column',
-    gap: '20px'
+    gap: '24px',
   },
-  success: {
-    background: 'rgba(226, 232, 240, 0.8)',
-    color: '#1e293b',
-    padding: '12px',
-    borderRadius: '6px',
-    fontSize: '14px',
-    marginBottom: '8px',
-    border: '1px solid rgba(226, 232, 240, 0.8)'
+  formGroup: {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '8px',
+  },
+  label: {
+    fontSize: '15px',
+    fontWeight: '600',
+    color: '#334155',
   },
   input: {
     padding: '14px 16px',
-    border: '1px solid rgba(226, 232, 240, 0.8)',
-    borderRadius: '6px',
     fontSize: '15px',
+    border: '2px solid #e2e8f0',
+    borderRadius: '12px',
     outline: 'none',
+    transition: 'all 0.3s ease',
     background: '#ffffff',
-    color: '#1e293b'
+    color: '#0f172a',
   },
   textarea: {
     padding: '14px 16px',
-    border: '1px solid rgba(226, 232, 240, 0.8)',
-    borderRadius: '6px',
     fontSize: '15px',
+    border: '2px solid #e2e8f0',
+    borderRadius: '12px',
     outline: 'none',
-    fontFamily: 'inherit',
-    resize: 'vertical',
+    transition: 'all 0.3s ease',
     background: '#ffffff',
-    color: '#1e293b'
+    color: '#0f172a',
+    resize: 'vertical',
+    fontFamily: 'inherit',
   },
-  button: {
-    background: 'linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)',
-    color: '#ffffff',
-    padding: '14px',
-    borderRadius: '6px',
-    border: 'none',
+  submitBtn: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: '16px 32px',
     fontSize: '16px',
     fontWeight: '600',
+    color: '#ffffff',
+    background: 'linear-gradient(135deg, #06b6d4 0%, #0891b2 100%)',
+    border: 'none',
+    borderRadius: '12px',
     cursor: 'pointer',
-    marginTop: '8px',
-    boxShadow: '0 4px 12px rgba(6, 182, 212, 0.3)'
-  }
+    transition: 'all 0.3s ease',
+    boxShadow: '0 6px 20px rgba(6, 182, 212, 0.3)',
+  },
+  submitBtnDisabled: {
+    opacity: 0.6,
+    cursor: 'not-allowed',
+  },
+  spinner: {
+    width: '18px',
+    height: '18px',
+    border: '3px solid rgba(255, 255, 255, 0.3)',
+    borderTop: '3px solid #ffffff',
+    borderRadius: '50%',
+    animation: 'spin 0.8s linear infinite',
+    marginRight: '8px',
+  },
 };
 
+// Add keyframe animation for spinner
+if (typeof document !== 'undefined') {
+  const styleSheet = document.styleSheets[0];
+  const keyframes = `
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  `;
+  try {
+    styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+  } catch (e) {
+    // Animation already exists or error inserting
+  }
+}

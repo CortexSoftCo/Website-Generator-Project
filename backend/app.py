@@ -11,10 +11,15 @@ import shutil
 import jwt
 from ai_generator import generate_website, regenerate_website, get_website_suggestions
 from jazzcash_payment import JazzCashPayment
+import google.generativeai as genai
 
 app = Flask(__name__)
 app.config.from_object(Config)
 CORS(app)
+
+# Configure Gemini for prompt improvement
+genai.configure(api_key=Config.GEMINI_API_KEY)
+model = genai.GenerativeModel('gemini-2.5-pro')
 
 @app.after_request
 def after_request(response):
@@ -44,8 +49,7 @@ with app.app_context():
             Category(name='Portfolio', slug='portfolio', icon='user'),
             Category(name='E-commerce', slug='ecommerce', icon='shopping-cart'),
             Category(name='Blog', slug='blog', icon='book'),
-            Category(name='Landing Page', slug='landing', icon='rocket'),
-            Category(name='Dashboard', slug='dashboard', icon='chart'),
+            Category(name='Education', slug='education', icon='graduation-cap'),
         ]
         db.session.bulk_save_objects(categories)
         db.session.commit()
@@ -712,6 +716,49 @@ def ai_generate_website():
         import traceback
         traceback.print_exc()
         return jsonify({'error': f'Failed to generate website: {str(e)}'}), 500
+
+
+@app.route('/api/ai/improve-prompt', methods=['POST'])
+@token_required
+def improve_prompt():
+    """Improve user's prompt using AI"""
+    data = request.json
+    original_prompt = data.get('prompt', '')
+    
+    if not original_prompt:
+        return jsonify({'error': 'Prompt is required'}), 400
+    
+    try:
+        # Use Gemini to improve the prompt
+        improvement_prompt = f"""You are an expert at crafting detailed website requirements. A user wants to create a website and provided this description:
+
+"{original_prompt}"
+
+Your task is to improve and expand this description to make it more specific and actionable. Add details about:
+- The type of business/website and its purpose
+- Specific pages and features that should be included
+- Visual style preferences (modern, minimalist, professional, etc.)
+- Color scheme suggestions
+- Target audience considerations
+- Key functionality needed
+
+Write an improved prompt that is clear, detailed, and will help generate a better website. Keep it concise but comprehensive (2-4 sentences).
+
+Return ONLY the improved prompt text, no explanations or additional formatting."""
+
+        response = model.generate_content(improvement_prompt)
+        improved_prompt = response.text.strip()
+        
+        return jsonify({
+            'original_prompt': original_prompt,
+            'improved_prompt': improved_prompt
+        }), 200
+        
+    except Exception as e:
+        print(f"Prompt Improvement Error: {str(e)}")
+        import traceback
+        traceback.print_exc()
+        return jsonify({'error': f'Failed to improve prompt: {str(e)}'}), 500
 
 
 @app.route('/api/ai/regenerate/<int:website_id>', methods=['POST'])

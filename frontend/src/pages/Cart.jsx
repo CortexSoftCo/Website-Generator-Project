@@ -20,29 +20,16 @@ export default function Cart() {
 
   const handleCheckout = async () => {
     if (items.length === 0) return;
-
-    setLoading(true);
-    try {
-      // Process each purchase
-      for (const item of items) {
-        try {
-          await createPurchase({ template_id: item.id });
-        } catch (err) {
-          // Skip if already purchased
-          if (!err.response?.data?.error?.includes('already purchased')) {
-            throw err;
-          }
-        }
+    
+    // Navigate to payment page with cart details
+    navigate('/payment', {
+      state: {
+        amount: total,
+        template_id: items.map(item => item.id),
+        purchase_type: 'cart',
+        items: items
       }
-      
-      clearCart();
-      alert('Purchase successful! Check your dashboard for downloads.');
-      navigate('/buyer/dashboard');
-    } catch (err) {
-      alert(err.response?.data?.error || 'Checkout failed');
-    } finally {
-      setLoading(false);
-    }
+    });
   };
 
   if (items.length === 0) {
