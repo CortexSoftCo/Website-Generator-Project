@@ -15,7 +15,7 @@ import google.generativeai as genai
 
 app = Flask(__name__)
 app.config.from_object(Config)
-CORS(app)
+CORS(app, origins=Config.CORS_ORIGINS, supports_credentials=True)
 
 # Configure Gemini for prompt improvement
 genai.configure(api_key=Config.GEMINI_API_KEY)
