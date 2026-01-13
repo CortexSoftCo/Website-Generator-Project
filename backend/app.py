@@ -68,8 +68,8 @@ def init_database():
         print(f"⚠️ Database initialization skipped: {str(e)}")
         print("Database will be initialized on first request")
 
-# Try to initialize database (won't crash if DB not ready)
-init_database()
+# Don't initialize database at startup - use endpoint instead
+# init_database()  # Commented out to prevent startup crashes
 
 
 # ==================== HEALTH CHECK ====================
@@ -87,16 +87,19 @@ def root():
 @app.route('/api/health', methods=['GET'])
 def health_check():
     """Health check endpoint"""
+    db_status = 'unknown'
     try:
         # Check database connection
-        db.session.execute(db.text('SELECT 1'))
-        db_status = 'connected'
+        with app.app_context():
+            db.session.execute(db.text('SELECT 1'))
+            db_status = 'connected'
     except Exception as e:
-        db_status = f'error: {str(e)}'
+        db_status = f'disconnected: {str(e)[:100]}'
     
     return jsonify({
         'status': 'healthy',
-        'database': db_status
+        'database': db_status,
+        'message': 'API is running. Use /api/init-database to initialize database.'
     }), 200
 
 
