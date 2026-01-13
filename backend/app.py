@@ -15,21 +15,21 @@ import google.generativeai as genai
 
 app = Flask(__name__)
 app.config.from_object(Config)
-CORS(app, origins=Config.CORS_ORIGINS, supports_credentials=True)
+
+# Configure CORS properly
+CORS(app, 
+     resources={r"/api/*": {"origins": Config.CORS_ORIGINS}},
+     supports_credentials=True,
+     allow_headers=['Content-Type', 'Authorization'],
+     methods=['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'])
 
 # Configure Gemini for prompt improvement
-genai.configure(api_key=Config.GEMINI_API_KEY)
-model = genai.GenerativeModel('gemini-2.5-pro')
-
-@app.after_request
-def after_request(response):
-    response.headers['Access-Control-Allow-Origin'] = '*'
-    response.headers['Access-Control-Allow-Credentials'] = 'false'
-    response.headers['Access-Control-Allow-Headers'] = 'Content-Type, Authorization'
-    response.headers['Access-Control-Allow-Methods'] = 'GET, POST, PUT, DELETE, OPTIONS'
-    response.headers['X-Frame-Options'] = 'ALLOWALL'
-    response.headers['Content-Security-Policy'] = "frame-ancestors *"
-    return response
+try:
+    genai.configure(api_key=Config.GEMINI_API_KEY)
+    model = genai.GenerativeModel('gemini-2.5-pro')
+except Exception as e:
+    print(f"⚠️ Gemini configuration failed: {e}")
+    model = None
 
 db.init_app(app)
 
@@ -70,6 +70,34 @@ def init_database():
 
 # Try to initialize database (won't crash if DB not ready)
 init_database()
+
+
+# ==================== HEALTH CHECK ====================
+
+@app.route('/', methods=['GET'])
+def root():
+    """Root endpoint"""
+    return jsonify({
+        'message': 'Website Generator API',
+        'status': 'running',
+        'version': '1.0.0'
+    }), 200
+
+@app.route('/health', methods=['GET'])
+@app.route('/api/health', methods=['GET'])
+def health_check():
+    """Health check endpoint"""
+    try:
+        # Check database connection
+        db.session.execute(db.text('SELECT 1'))
+        db_status = 'connected'
+    except Exception as e:
+        db_status = f'error: {str(e)}'
+    
+    return jsonify({
+        'status': 'healthy',
+        'database': db_status
+    }), 200
 
 
 # ==================== INIT ROUTE (Call once after deployment) ====================
