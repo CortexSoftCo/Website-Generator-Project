@@ -34,7 +34,6 @@ services:
   - type: web
     name: website-generator-frontend
     env: static
-    region: oregon
     buildCommand: cd frontend && npm install && npm run build
     staticPublishPath: ./frontend/dist
     envVars:
