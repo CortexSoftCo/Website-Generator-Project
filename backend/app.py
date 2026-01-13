@@ -39,28 +39,37 @@ os.makedirs(Config.TEMPLATE_FOLDER, exist_ok=True)
 os.makedirs(Config.AI_FOLDER, exist_ok=True)
 os.makedirs(os.path.join(Config.UPLOAD_FOLDER, 'images'), exist_ok=True)
 
-# Initialize database
-with app.app_context():
-    db.create_all()
-    # Create default categories if not exist
-    if Category.query.count() == 0:
-        categories = [
-            Category(name='Business', slug='business', icon='briefcase'),
-            Category(name='Portfolio', slug='portfolio', icon='user'),
-            Category(name='E-commerce', slug='ecommerce', icon='shopping-cart'),
-            Category(name='Blog', slug='blog', icon='book'),
-            Category(name='Education', slug='education', icon='graduation-cap'),
-        ]
-        db.session.bulk_save_objects(categories)
-        db.session.commit()
-    
-    # Create admin user if not exist
-    if not User.query.filter_by(email=Config.ADMIN_EMAIL).first():
-        admin = User(email=Config.ADMIN_EMAIL, role='admin', is_verified=True)
-        admin.set_password(Config.ADMIN_PASSWORD)
-        db.session.add(admin)
-        db.session.commit()
-        print(f"✅ Admin user created: {Config.ADMIN_EMAIL}")
+# Initialize database (with error handling for deployment)
+def init_database():
+    """Initialize database tables and default data"""
+    try:
+        with app.app_context():
+            db.create_all()
+            # Create default categories if not exist
+            if Category.query.count() == 0:
+                categories = [
+                    Category(name='Business', slug='business', icon='briefcase'),
+                    Category(name='Portfolio', slug='portfolio', icon='user'),
+                    Category(name='E-commerce', slug='ecommerce', icon='shopping-cart'),
+                    Category(name='Blog', slug='blog', icon='book'),
+                    Category(name='Education', slug='education', icon='graduation-cap'),
+                ]
+                db.session.bulk_save_objects(categories)
+                db.session.commit()
+            
+            # Create admin user if not exist
+            if not User.query.filter_by(email=Config.ADMIN_EMAIL).first():
+                admin = User(email=Config.ADMIN_EMAIL, role='admin', is_verified=True)
+                admin.set_password(Config.ADMIN_PASSWORD)
+                db.session.add(admin)
+                db.session.commit()
+                print(f"✅ Admin user created: {Config.ADMIN_EMAIL}")
+    except Exception as e:
+        print(f"⚠️ Database initialization skipped: {str(e)}")
+        print("Database will be initialized on first request")
+
+# Try to initialize database (won't crash if DB not ready)
+init_database()
 
 
 # ==================== AUTH ROUTES ====================
