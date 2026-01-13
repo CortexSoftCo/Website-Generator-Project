@@ -72,6 +72,62 @@ def init_database():
 init_database()
 
 
+# ==================== INIT ROUTE (Call once after deployment) ====================
+
+@app.route('/api/init-database', methods=['POST'])
+def init_database_endpoint():
+    """
+    Initialize database tables and default data.
+    Call this endpoint once after deployment to set up the database.
+    Requires admin password for security.
+    """
+    data = request.json or {}
+    password = data.get('password', '')
+    
+    # Simple password protection
+    if password != Config.ADMIN_PASSWORD:
+        return jsonify({'error': 'Unauthorized. Provide correct admin password'}), 401
+    
+    try:
+        with app.app_context():
+            # Create all tables
+            db.create_all()
+            
+            # Create default categories if not exist
+            if Category.query.count() == 0:
+                categories = [
+                    Category(name='Business', slug='business', icon='briefcase'),
+                    Category(name='Portfolio', slug='portfolio', icon='user'),
+                    Category(name='E-commerce', slug='ecommerce', icon='shopping-cart'),
+                    Category(name='Blog', slug='blog', icon='book'),
+                    Category(name='Education', slug='education', icon='graduation-cap'),
+                ]
+                db.session.bulk_save_objects(categories)
+                db.session.commit()
+            
+            # Create admin user if not exist
+            if not User.query.filter_by(email=Config.ADMIN_EMAIL).first():
+                admin = User(email=Config.ADMIN_EMAIL, role='admin', is_verified=True)
+                admin.set_password(Config.ADMIN_PASSWORD)
+                db.session.add(admin)
+                db.session.commit()
+            
+            return jsonify({
+                'message': 'Database initialized successfully',
+                'details': {
+                    'tables_created': True,
+                    'categories_created': Category.query.count(),
+                    'admin_user': Config.ADMIN_EMAIL
+                }
+            }), 200
+            
+    except Exception as e:
+        return jsonify({
+            'error': 'Database initialization failed',
+            'details': str(e)
+        }), 500
+
+
 # ==================== AUTH ROUTES ====================
 
 @app.route('/api/auth/register', methods=['POST'])
