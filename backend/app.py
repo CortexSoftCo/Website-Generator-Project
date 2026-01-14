@@ -59,12 +59,30 @@ def init_database():
                 print("✅ Categories created")
             
             # Create admin user if not exist
-            if not User.query.filter_by(email=Config.ADMIN_EMAIL).first():
-                admin = User(email=Config.ADMIN_EMAIL, role='admin', is_verified=True)
-                admin.set_password(Config.ADMIN_PASSWORD)
-                db.session.add(admin)
+            admin_user = User.query.filter_by(email=Config.ADMIN_EMAIL).first()
+            if not admin_user:
+                admin_user = User(email=Config.ADMIN_EMAIL, role='admin', is_verified=True)
+                admin_user.set_password(Config.ADMIN_PASSWORD)
+                db.session.add(admin_user)
                 db.session.commit()
                 print(f"✅ Admin user created: {Config.ADMIN_EMAIL}")
+            
+            # Ensure we have admin_user for system seller
+            if not admin_user:
+                admin_user = User.query.filter_by(email=Config.ADMIN_EMAIL).first()
+            
+            # Create system seller for demo templates
+            system_seller = Seller.query.filter_by(user_id=admin_user.id).first()
+            if not system_seller:
+                system_seller = Seller(
+                    user_id=admin_user.id,
+                    business_name='CreatorBox Official',
+                    description='Official system templates curated by CreatorBox',
+                    total_revenue=0.0
+                )
+                db.session.add(system_seller)
+                db.session.commit()
+                print(f"✅ System seller created: {system_seller.business_name}")
             
             # Create demo templates if none exist
             if Template.query.count() == 0:
@@ -76,7 +94,7 @@ def init_database():
                         'description': 'Professional business website with clean design',
                         'price': 29.99,
                         'category_id': categories_dict.get('business', 1),
-                        'seller_id': 0,  # System template
+                        'seller_id': system_seller.id,  # System seller
                         'status': 'approved',
                         'file_path': 'uploads/ProMan',
                         'preview_images': ['https://placehold.co/800x600/2563eb/ffffff?text=Business+Template'],
@@ -90,7 +108,7 @@ def init_database():
                         'description': 'Elegant portfolio template for creatives',
                         'price': 24.99,
                         'category_id': categories_dict.get('portfolio', 2),
-                        'seller_id': 0,
+                        'seller_id': system_seller.id,
                         'status': 'approved',
                         'file_path': 'uploads/kaira-1.0.0',
                         'preview_images': ['https://placehold.co/800x600/10b981/ffffff?text=Portfolio+Template'],
@@ -104,7 +122,7 @@ def init_database():
                         'description': 'Complete online store template',
                         'price': 39.99,
                         'category_id': categories_dict.get('ecommerce', 3),
-                        'seller_id': 0,
+                        'seller_id': system_seller.id,
                         'status': 'approved',
                         'file_path': 'uploads/Weldork',
                         'preview_images': ['https://placehold.co/800x600/f59e0b/ffffff?text=E-commerce+Template'],
@@ -118,7 +136,7 @@ def init_database():
                         'description': 'Modern SaaS landing page template',
                         'price': 34.99,
                         'category_id': categories_dict.get('business', 1),
-                        'seller_id': 0,
+                        'seller_id': system_seller.id,
                         'status': 'approved',
                         'file_path': 'uploads/saas-website-template',
                         'preview_images': ['https://placehold.co/800x600/8b5cf6/ffffff?text=SaaS+Template'],
@@ -132,7 +150,7 @@ def init_database():
                         'description': 'Delicious restaurant website template',
                         'price': 27.99,
                         'category_id': categories_dict.get('business', 1),
-                        'seller_id': 0,
+                        'seller_id': system_seller.id,
                         'status': 'approved',
                         'file_path': 'uploads/Italian-Cuisine',
                         'preview_images': ['https://placehold.co/800x600/ef4444/ffffff?text=Restaurant+Template'],
@@ -146,7 +164,7 @@ def init_database():
                         'description': 'Property listing and real estate template',
                         'price': 32.99,
                         'category_id': categories_dict.get('business', 1),
-                        'seller_id': 0,
+                        'seller_id': system_seller.id,
                         'status': 'approved',
                         'file_path': 'uploads/Makaan',
                         'preview_images': ['https://placehold.co/800x600/06b6d4/ffffff?text=Real+Estate+Template'],
@@ -160,7 +178,7 @@ def init_database():
                         'description': 'Online learning platform template',
                         'price': 29.99,
                         'category_id': categories_dict.get('education', 5),
-                        'seller_id': 0,
+                        'seller_id': None,
                         'status': 'approved',
                         'file_path': 'uploads/Kider',
                         'preview_images': ['https://placehold.co/800x600/ec4899/ffffff?text=Education+Template'],

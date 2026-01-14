@@ -81,7 +81,7 @@ class Template(db.Model):
     __tablename__ = 'templates'
     
     id = db.Column(db.Integer, primary_key=True)
-    seller_id = db.Column(db.Integer, db.ForeignKey('sellers.id'), nullable=False)
+    seller_id = db.Column(db.Integer, db.ForeignKey('sellers.id'), nullable=True)  # Nullable for system templates
     category_id = db.Column(db.Integer, db.ForeignKey('categories.id'), nullable=False)
     title = db.Column(db.String(200), nullable=False)
     description = db.Column(db.Text, nullable=False)
