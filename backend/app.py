@@ -56,6 +56,7 @@ def init_database():
                 ]
                 db.session.bulk_save_objects(categories)
                 db.session.commit()
+                print("✅ Categories created")
             
             # Create admin user if not exist
             if not User.query.filter_by(email=Config.ADMIN_EMAIL).first():
@@ -64,6 +65,118 @@ def init_database():
                 db.session.add(admin)
                 db.session.commit()
                 print(f"✅ Admin user created: {Config.ADMIN_EMAIL}")
+            
+            # Create demo templates if none exist
+            if Template.query.count() == 0:
+                categories_dict = {cat.slug: cat.id for cat in Category.query.all()}
+                
+                demo_templates = [
+                    {
+                        'title': 'Modern Business Template',
+                        'description': 'Professional business website with clean design',
+                        'price': 29.99,
+                        'category_id': categories_dict.get('business', 1),
+                        'seller_id': 0,  # System template
+                        'status': 'approved',
+                        'file_path': 'uploads/ProMan',
+                        'preview_images': ['https://placehold.co/800x600/2563eb/ffffff?text=Business+Template'],
+                        'demo_url': 'https://htmlcodex.com/business-website-template',
+                        'rating': 4.5,
+                        'downloads': 45,
+                        'views': 230
+                    },
+                    {
+                        'title': 'Portfolio Showcase',
+                        'description': 'Elegant portfolio template for creatives',
+                        'price': 24.99,
+                        'category_id': categories_dict.get('portfolio', 2),
+                        'seller_id': 0,
+                        'status': 'approved',
+                        'file_path': 'uploads/kaira-1.0.0',
+                        'preview_images': ['https://placehold.co/800x600/10b981/ffffff?text=Portfolio+Template'],
+                        'demo_url': 'https://themewagon.com/themes/free-bootstrap-4-html5-portfolio-website-template-kaira/',
+                        'rating': 4.7,
+                        'downloads': 67,
+                        'views': 312
+                    },
+                    {
+                        'title': 'E-commerce Shop',
+                        'description': 'Complete online store template',
+                        'price': 39.99,
+                        'category_id': categories_dict.get('ecommerce', 3),
+                        'seller_id': 0,
+                        'status': 'approved',
+                        'file_path': 'uploads/Weldork',
+                        'preview_images': ['https://placehold.co/800x600/f59e0b/ffffff?text=E-commerce+Template'],
+                        'demo_url': 'https://htmlcodex.com/ecommerce-website-template',
+                        'rating': 4.6,
+                        'downloads': 89,
+                        'views': 445
+                    },
+                    {
+                        'title': 'SaaS Website',
+                        'description': 'Modern SaaS landing page template',
+                        'price': 34.99,
+                        'category_id': categories_dict.get('business', 1),
+                        'seller_id': 0,
+                        'status': 'approved',
+                        'file_path': 'uploads/saas-website-template',
+                        'preview_images': ['https://placehold.co/800x600/8b5cf6/ffffff?text=SaaS+Template'],
+                        'demo_url': 'https://htmlcodex.com/saas-website-template',
+                        'rating': 4.8,
+                        'downloads': 123,
+                        'views': 567
+                    },
+                    {
+                        'title': 'Restaurant & Cafe',
+                        'description': 'Delicious restaurant website template',
+                        'price': 27.99,
+                        'category_id': categories_dict.get('business', 1),
+                        'seller_id': 0,
+                        'status': 'approved',
+                        'file_path': 'uploads/Italian-Cuisine',
+                        'preview_images': ['https://placehold.co/800x600/ef4444/ffffff?text=Restaurant+Template'],
+                        'demo_url': 'https://htmlcodex.com/restaurant-website-template',
+                        'rating': 4.4,
+                        'downloads': 78,
+                        'views': 289
+                    },
+                    {
+                        'title': 'Real Estate',
+                        'description': 'Property listing and real estate template',
+                        'price': 32.99,
+                        'category_id': categories_dict.get('business', 1),
+                        'seller_id': 0,
+                        'status': 'approved',
+                        'file_path': 'uploads/Makaan',
+                        'preview_images': ['https://placehold.co/800x600/06b6d4/ffffff?text=Real+Estate+Template'],
+                        'demo_url': 'https://htmlcodex.com/real-estate-website-template',
+                        'rating': 4.5,
+                        'downloads': 56,
+                        'views': 234
+                    },
+                    {
+                        'title': 'Education & Courses',
+                        'description': 'Online learning platform template',
+                        'price': 29.99,
+                        'category_id': categories_dict.get('education', 5),
+                        'seller_id': 0,
+                        'status': 'approved',
+                        'file_path': 'uploads/Kider',
+                        'preview_images': ['https://placehold.co/800x600/ec4899/ffffff?text=Education+Template'],
+                        'demo_url': 'https://htmlcodex.com/education-website-template',
+                        'rating': 4.6,
+                        'downloads': 92,
+                        'views': 401
+                    }
+                ]
+                
+                for template_data in demo_templates:
+                    template = Template(**template_data)
+                    db.session.add(template)
+                
+                db.session.commit()
+                print(f"✅ Created {len(demo_templates)} demo templates")
     except Exception as e:
         print(f"⚠️ Database initialization skipped: {str(e)}")
         print("Database will be initialized on first request")
