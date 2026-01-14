@@ -153,7 +153,7 @@ def init_database():
                         'seller_id': system_seller.id,
                         'status': 'approved',
                         'file_path': 'backend/uploads/templates/Italian-Cuisine',
-                        'preview_images': ['/uploads/templates/Italian-Cuisine/img/img-1.jpg', '/uploads/templates/Italian-Cuisine/img/img-2.jpg', '/uploads/templates/Italian-Cuisine/img/img-3.jpg'],
+                        'preview_images': ['/uploads/images/Italian_Cuisine.png', '/uploads/templates/Italian-Cuisine/img/img-2.jpg', '/uploads/templates/Italian-Cuisine/img/img-3.jpg'],
                         'demo_url': 'https://htmlcodex.com/restaurant-website-template',
                         'rating': 4.4,
                         'downloads': 78,
