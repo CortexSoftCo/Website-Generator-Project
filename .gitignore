@@ -32,11 +32,17 @@ instance/
 .DS_Store
 Thumbs.db
 
-# Uploads
+# Uploads (root level - keep gitignored)
 uploads/templates/*
 uploads/ai_generated/*
 uploads/images/*
 !uploads/.gitkeep
+
+# Backend uploads - allow template folders for deployment
+# backend/uploads/templates/* is tracked
+backend/uploads/ai_generated/*
+backend/uploads/images/*
+!backend/uploads/.gitkeep
 
 # Logs
 *.log

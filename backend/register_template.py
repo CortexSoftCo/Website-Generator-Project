@@ -81,4 +81,3 @@ def register_existing_template():
 
 if __name__ == '__main__':
     register_existing_template()
-
