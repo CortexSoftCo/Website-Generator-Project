@@ -28,9 +28,9 @@ class Config:
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=24)
     
     # File Upload
-    UPLOAD_FOLDER = 'uploads'
-    TEMPLATE_FOLDER = 'uploads/templates'
-    AI_FOLDER = 'uploads/ai_generated'
+    UPLOAD_FOLDER = 'backend/uploads'
+    TEMPLATE_FOLDER = 'backend/uploads/templates'
+    AI_FOLDER = 'backend/uploads/ai_generated'
     MAX_CONTENT_LENGTH = 100 * 1024 * 1024  # 100MB max file size
     ALLOWED_EXTENSIONS = {'zip', 'rar', '7z'}
     
