@@ -78,7 +78,7 @@ def init_database():
                     user_id=admin_user.id,
                     business_name='CreatorBox Official',
                     description='Official system templates curated by CreatorBox',
-                    total_revenue=0.0
+                    revenue=0.0
                 )
                 db.session.add(system_seller)
                 db.session.commit()
